@@ -1,5 +1,7 @@
 package com.feivirus.designpattern.create.staticfactory;
 
+import com.feivirus.designpattern.domain.Car;
+
 /**
  * 
  * @author feivirus
@@ -16,5 +18,9 @@ package com.feivirus.designpattern.create.staticfactory;
  * 
  */
 public class StaticFactory {
-    
+    public static void main(String[] args) {
+        Car car = CarStaticFacory.createCar("bmw");
+        
+        System.out.println(car.getName());
+    }
 }
