@@ -1,0 +1,13 @@
+/target/
+/src/main/resources/rebel.xml
+.classpath
+.project
+.settings
+src/main/webapp/GIT_INFO.txt
+*.iml
+.idea/*
+dubboRegister
+src/main/resources/mybatis/generate/*
+generate/*
+src/main/java/cn/shibei/core/controller/TestController.java
+src/main/resources/config/mysql.properties
