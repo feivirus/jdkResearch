@@ -1,5 +1,5 @@
 package com.feivirus.designpattern.domain;
 
-public interface Car {
-    public String getName();
+public abstract class Car {
+    public abstract String getName();
 }

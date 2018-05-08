@@ -12,4 +12,19 @@ public class CarStaticFacory {
         }
         return car;
     }
+    
+    /**
+     * 调用的都是无参的构造方法，不好，为了工厂而工厂.
+     * @param classObj
+     * @return
+     */
+    public static <T extends Car>T createCar(Class<T> classObj) {
+    	T result = null;
+    	try {
+			result = (T)Class.forName(classObj.getName()).newInstance();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	return result;
+    }
 }

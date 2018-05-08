@@ -1,8 +1,6 @@
-package com.feivirus.spitest;
+package com.feivirus.spi;
 
 import java.util.ServiceLoader;
-
-import com.feivirus.spi.Animal;
 
 public class SpiTest {
     public ServiceLoader<Animal> serviceLoader = ServiceLoader.load(Animal.class);
