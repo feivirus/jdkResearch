@@ -19,7 +19,8 @@ import com.feivirus.designpattern.domain.Car;
  * 缺点:
  * 1.扩展性差，除了添加新的产品类，每次还需要修改静态工厂类
  * 2.不支持不同产品的构造方法参数不一样 *
- * 
+ * 参考
+ * https://blog.csdn.net/zxt0601/article/details/52798423
  */
 public class StaticFactory {
     public static void main(String[] args) {
