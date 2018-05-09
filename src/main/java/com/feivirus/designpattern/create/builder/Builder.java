@@ -8,6 +8,8 @@ package com.feivirus.designpattern.create.builder;
  */
 public class Builder {
     public static void main(String[] args) {
-        Person person = Person.Builder().build();
+        Person person = new Person.Builder().setAddress("xixi").build();
+        
+        System.out.println(person.getAddress());
     }
 }
