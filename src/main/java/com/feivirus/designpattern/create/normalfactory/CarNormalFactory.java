@@ -1,6 +1,6 @@
 package com.feivirus.designpattern.create.normalfactory;
 
-import com.feivirus.designpattern.domain.Car;
+import com.feivirus.designpattern.create.normalfactory.Car;
 
 /**
  * 

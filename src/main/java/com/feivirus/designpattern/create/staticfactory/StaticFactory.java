@@ -3,8 +3,8 @@ package com.feivirus.designpattern.create.staticfactory;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.feivirus.designpattern.domain.BMWCar;
-import com.feivirus.designpattern.domain.Car;
+import com.feivirus.designpattern.create.staticfactory.BMWCar;
+import com.feivirus.designpattern.create.staticfactory.Car;
 
 /**
  * 

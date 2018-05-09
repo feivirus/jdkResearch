@@ -1,4 +1,4 @@
-package com.feivirus.designpattern.domain;
+package com.feivirus.designpattern.create.abstractfactory;
 
 /**
  * 硫酸/铅酸电池
@@ -8,7 +8,7 @@ package com.feivirus.designpattern.domain;
 public class AcidBattery extends Battery{
 
 	@Override
-	public String getPower() {
+	public String getName() {
 		return "酸类电池电量 " + this.batteryPower;
 	}
 	

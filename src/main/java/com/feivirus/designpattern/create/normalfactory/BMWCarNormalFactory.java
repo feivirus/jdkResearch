@@ -1,7 +1,7 @@
 package com.feivirus.designpattern.create.normalfactory;
 
-import com.feivirus.designpattern.domain.BMWCar;
-import com.feivirus.designpattern.domain.Car;
+import com.feivirus.designpattern.create.normalfactory.BMWCar;
+import com.feivirus.designpattern.create.normalfactory.Car;
 
 public class BMWCarNormalFactory extends CarNormalFactory{
 

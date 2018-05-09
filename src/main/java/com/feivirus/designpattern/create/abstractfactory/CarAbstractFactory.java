@@ -1,10 +1,11 @@
 package com.feivirus.designpattern.create.abstractfactory;
 
-import com.feivirus.designpattern.domain.Battery;
-import com.feivirus.designpattern.domain.Car;
+import com.feivirus.designpattern.create.abstractfactory.AbstractProduct;
+import com.feivirus.designpattern.create.abstractfactory.Battery;
+import com.feivirus.designpattern.create.abstractfactory.Car;
 
 public abstract class CarAbstractFactory {
-	public abstract Car createCar();
+	public abstract AbstractProduct createCar();
 	
-	public abstract Battery createBattery();
+	public abstract AbstractProduct createBattery();
 }

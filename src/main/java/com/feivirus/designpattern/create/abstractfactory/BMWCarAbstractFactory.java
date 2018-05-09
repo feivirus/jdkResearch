@@ -1,19 +1,20 @@
 package com.feivirus.designpattern.create.abstractfactory;
 
-import com.feivirus.designpattern.domain.BMWCar;
-import com.feivirus.designpattern.domain.Battery;
-import com.feivirus.designpattern.domain.Car;
-import com.feivirus.designpattern.domain.LithiumBattery;
+import com.feivirus.designpattern.create.abstractfactory.AbstractProduct;
+import com.feivirus.designpattern.create.abstractfactory.BMWCar;
+import com.feivirus.designpattern.create.abstractfactory.Battery;
+import com.feivirus.designpattern.create.abstractfactory.Car;
+import com.feivirus.designpattern.create.abstractfactory.LithiumBattery;
 
 public class BMWCarAbstractFactory extends CarAbstractFactory{
 
 	@Override
-	public Car createCar() {
+	public AbstractProduct createCar() {
 		return new BMWCar();
 	}
 
 	@Override
-	public Battery createBattery() {
+	public AbstractProduct createBattery() {
 		return new LithiumBattery();
 	}
 	

@@ -1,4 +1,4 @@
-package com.feivirus.designpattern.domain;
+package com.feivirus.designpattern.create.abstractfactory;
 
 /**
  * 锂电池
@@ -8,7 +8,7 @@ package com.feivirus.designpattern.domain;
 public class LithiumBattery extends Battery{
 
 	@Override
-	public String getPower() {
+	public String getName() {
 		return "I am 锂电池,剩余电量 " + this.batteryPower;
 	}
 	

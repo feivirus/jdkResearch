@@ -1,4 +1,4 @@
-package com.feivirus.designpattern.domain;
+package com.feivirus.designpattern.create.abstractfactory;
 
 public class BenzCar extends Car{
 	

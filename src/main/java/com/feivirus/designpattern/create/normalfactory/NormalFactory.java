@@ -1,6 +1,6 @@
 package com.feivirus.designpattern.create.normalfactory;
 
-import com.feivirus.designpattern.domain.Car;
+import com.feivirus.designpattern.create.normalfactory.Car;
 
 /**
  * 把静态工厂模式中的工厂拆分成两层,抽象工厂层 + 具体的工厂子类层
