@@ -2,6 +2,7 @@ package com.feivirus.designpattern.create.factorymethod;
 
 /**
  * 工厂方法是每个工厂生产相同的产品。抽象工厂是每个工厂生产不同的产品
+ * 把静态工厂模式中的工厂拆分成两层,抽象工厂层 + 具体的工厂子类层.工厂方法和抽象工厂模式是把工厂拆分出两层
  * @author feivirus
  * 优点
  * 1.新增产品只需要新增具体的产品类和具体工厂类
