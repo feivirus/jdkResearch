@@ -1,8 +1,10 @@
 package com.feivirus.designpattern.behavior.chainofresponsibility;
 
-import com.feivirus.designpattern.behavior.chainofresponsibility.base.FilterChain;
-import com.feivirus.designpattern.behavior.chainofresponsibility.base.Request;
-import com.feivirus.designpattern.behavior.chainofresponsibility.base.Response;
+import com.feivirus.designpattern.behavior.chainofresponsibility.pattern1.FilterChain;
+import com.feivirus.designpattern.behavior.chainofresponsibility.pattern1.HTMLFilter;
+import com.feivirus.designpattern.behavior.chainofresponsibility.pattern1.Request;
+import com.feivirus.designpattern.behavior.chainofresponsibility.pattern1.Response;
+import com.feivirus.designpattern.behavior.chainofresponsibility.pattern1.SensitiveFilter;
 
 /**
  * 职责链模式

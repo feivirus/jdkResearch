@@ -1,9 +1,4 @@
-package com.feivirus.designpattern.behavior.chainofresponsibility;
-
-import com.feivirus.designpattern.behavior.chainofresponsibility.base.Filter;
-import com.feivirus.designpattern.behavior.chainofresponsibility.base.FilterChain;
-import com.feivirus.designpattern.behavior.chainofresponsibility.base.Request;
-import com.feivirus.designpattern.behavior.chainofresponsibility.base.Response;
+package com.feivirus.designpattern.behavior.chainofresponsibility.pattern1;
 
 public class HTMLFilter  implements Filter{
 
@@ -11,7 +6,7 @@ public class HTMLFilter  implements Filter{
 		String content = request.getRequestMsg();
 		
 		content = content.replace('1', 'a');
-		request.setRequestMsg(content);
+		request.setRequestMsg(content + "<html>--");
 		//response.setResponseMsg(content + "<html>--");
 		
 		filterChain.doFilter(request, response, filterChain);

@@ -1,4 +1,4 @@
-package com.feivirus.designpattern.behavior.chainofresponsibility.base;
+package com.feivirus.designpattern.behavior.chainofresponsibility.pattern1;
 
 import java.util.ArrayList;
 import java.util.List;

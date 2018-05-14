@@ -1,4 +1,4 @@
-package com.feivirus.designpattern.behavior.chainofresponsibility.base;
+package com.feivirus.designpattern.behavior.chainofresponsibility.pattern1;
 
 public class Response {
 	private String responseMsg;
