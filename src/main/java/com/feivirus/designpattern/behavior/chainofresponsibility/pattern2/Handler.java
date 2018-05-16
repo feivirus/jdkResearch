@@ -11,5 +11,5 @@ public abstract class Handler {
 		this.successor = successor;
 	}
 	
-	public abstract void  handleRequest(String userName, double fee);
+	public abstract String  handleRequest(String userName, double fee);
 }

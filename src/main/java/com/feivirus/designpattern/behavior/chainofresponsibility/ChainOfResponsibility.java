@@ -5,6 +5,9 @@ import com.feivirus.designpattern.behavior.chainofresponsibility.pattern1.HTMLFi
 import com.feivirus.designpattern.behavior.chainofresponsibility.pattern1.Request;
 import com.feivirus.designpattern.behavior.chainofresponsibility.pattern1.Response;
 import com.feivirus.designpattern.behavior.chainofresponsibility.pattern1.SensitiveFilter;
+import com.feivirus.designpattern.behavior.chainofresponsibility.pattern2.DeptManager;
+import com.feivirus.designpattern.behavior.chainofresponsibility.pattern2.Handler;
+import com.feivirus.designpattern.behavior.chainofresponsibility.pattern2.ProjectManager;
 
 /**
  * 职责链模式
@@ -13,6 +16,7 @@ import com.feivirus.designpattern.behavior.chainofresponsibility.pattern1.Sensit
  */
 public class ChainOfResponsibility {
 	public static void main(String[] args) {
+		//patter1
 		Request request = new Request();
 		Response response = new Response();
 		FilterChain filterChain = new FilterChain();
@@ -24,5 +28,18 @@ public class ChainOfResponsibility {
 		
 		System.out.println("request: " + request.getRequestMsg());
 		System.out.println("response: " + response.getResponseMsg());
+		
+		//patter2
+		Handler deptManager = new DeptManager();
+		Handler projectManager = new ProjectManager();
+		
+		projectManager.setSuccessor(deptManager);
+		
+		String result = projectManager.handleRequest("hello", 100);
+		System.out.println(result);
+		result = projectManager.handleRequest("feivirus", 800);
+		System.out.println(result);
+		result = projectManager.handleRequest("feivirus", 5000);
+		System.out.println("结果" + result);
 	}
 }
