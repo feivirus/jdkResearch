@@ -8,10 +8,6 @@ package com.feivirus.designpattern.behavior.chainofresponsibility.pattern2;
 public class ProjectManager extends Handler{
 
 	@Override
-<<<<<<< HEAD
-	public void handleRequest(String userName, double fee) {
-		String re
-=======
 	public String handleRequest(String userName, double fee) {
 		String result = "";
 		
@@ -27,6 +23,5 @@ public class ProjectManager extends Handler{
 			}
 		}
 		return result;
->>>>>>> 8039fa7e3e4b7ef555070b6413b4f911fd37bcde
 	}
 }

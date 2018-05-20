@@ -1,7 +1,5 @@
 package com.feivirus.junit;
 
-import org.junit.runner.RunWith;
-
 
 /**
  * 

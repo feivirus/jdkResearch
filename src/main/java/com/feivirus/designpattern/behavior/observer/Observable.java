@@ -3,11 +3,11 @@ package com.feivirus.designpattern.behavior.observer;
 import java.util.Vector;
 
 public class Observable {
-	private Vector<Object> objsVec;
+	private Vector<Observer> objsVec;
 	
 	public Observable() {
 		if (objsVec == null) {
-			objsVec = new Vector<Object>();
+			objsVec = new Vector<Observer>();
 		}
 	}
 	
@@ -27,6 +27,8 @@ public class Observable {
 	}
 	
 	public void notifyObservers(Object arg) {
-		
+		for(int i = 0; i < objsVec.size(); i++) {
+			objsVec.get(i).update(this, arg);
+		}
 	}
 }
