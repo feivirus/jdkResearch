@@ -19,8 +19,8 @@ import java.io.Serializable;
  *
  *
  */
-public class Order implements Serializable{
-	private static final long serialVersionUID = -8859324123344372618L;
+public class Order /*implements Serializable*/{
+	//private static final long serialVersionUID = -8859324123344372618L;
 	private Integer orderId;
 	
 	private String orderNo;
