@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Function;
+//import java.util.function.Function;
 
 /**
  * 
@@ -13,10 +13,10 @@ import java.util.function.Function;
  *
  */
 public class BatchValidateService {
-	public <R, T>  R execute(Map<Integer , List<T>> map, Function<String, R> callback) {
-		boolean falg = isSizeEqual(map);
-		return callback.apply("");
-	}
+//	public <R, T>  R execute(Map<Integer , List<T>> map, Function<String, R> callback) {
+//		boolean falg = isSizeEqual(map);
+//		return callback.apply("");
+//	}
 	
 	public <T>boolean isSizeEqual(Map<Integer, List<T>> map) {
 		if (map == null) {
