@@ -1,4 +1,4 @@
-package com.feivirus;
+package com.feivirus.codespecification;
 
 /**
  * 
