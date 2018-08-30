@@ -26,13 +26,14 @@ public class HttpPocessor {
 			request = new HttpRequest(input);
 			
 			response = new HttpResponse(output);
-			response.setRequest(request);
-			response.setHeader("Server", "feivirus Servlet Container");
+			//response.setRequest(request);
+			//response.setHeader("Server", "feivirus Servlet Container");
 			
 			//parseRequest(input, output);
 			//parseHeaders(input);
 			
-			if (request.getRequestURI().startsWith("/servlet/")) {
+			//if (request.getRequestURI().startsWith("/servlet/")) {
+			if (request != null) {			
 				ServletProcessor processor = new ServletProcessor();
 				processor.process(request, response);
 			} else {

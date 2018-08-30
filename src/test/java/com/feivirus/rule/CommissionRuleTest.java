@@ -1,4 +1,4 @@
-package com.feivirus.rule;
+package com.feivirus.ruleValidator;
 
 
 import java.util.ArrayList;
@@ -8,9 +8,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.feivirus.rule.base.RuleValidator;
-import com.feivirus.rule.commission.CarRuleCondition;
-import com.feivirus.rule.commission.CommissionRule;
+import com.feivirus.ruleValidator.base.RuleValidator;
+import com.feivirus.ruleValidator.commission.CarRuleCondition;
+import com.feivirus.ruleValidator.commission.CommissionRule;
 
 public class CommissionRuleTest {
 	

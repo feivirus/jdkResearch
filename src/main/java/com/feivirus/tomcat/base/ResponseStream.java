@@ -115,7 +115,7 @@ public class ResponseStream extends ServletOutputStream {
     public void close() throws IOException {
         if (closed)
             throw new IOException("responseStream.close.closed");
-        response.flushBuffer();
+        //response.flushBuffer();
         closed = true;
     }
 
@@ -127,9 +127,8 @@ public class ResponseStream extends ServletOutputStream {
   public void flush() throws IOException {
     if (closed)
             throw new IOException("responseStream.flush.closed");
-       if (commit)
-            response.flushBuffer();
-
+       //if (commit)
+            //response.flushBuffer();
     }
 
 
@@ -148,7 +147,7 @@ public class ResponseStream extends ServletOutputStream {
         if ((length > 0) && (count >= length))
             throw new IOException("responseStream.write.count");
 
-        response.write(b);
+        //response.write(b);
         count++;
 
     }
@@ -167,7 +166,7 @@ public class ResponseStream extends ServletOutputStream {
         int actual = len;
         if ((length > 0) && ((count + len) >= length))
             actual = length - count;
-        response.write(b, off, actual);
+        //response.write(b, off, actual);
         count += actual;
         if (actual < len)
             throw new IOException("responseStream.write.count");
