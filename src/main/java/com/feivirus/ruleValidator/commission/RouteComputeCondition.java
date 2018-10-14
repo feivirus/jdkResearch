@@ -21,7 +21,7 @@ import com.feivirus.ruleValidator.enums.QuoteTypeEnum;
  * @author feivirus
  *
  */
-public class TransactionComputeRuleCondition{
+public class RouteComputeCondition{
 	//适用地区,老版的areaDefList
 	@RuleConditionChecker(checkType = RuleConditionCheckerType.SYS_AREA_LIST_CHECKER)
 	private List<SysAreaDTO> sysAreaList;	

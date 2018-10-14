@@ -19,7 +19,7 @@ public class CommissionRule extends AbstractRule{
 	
 	private PersonRuleCondition personCommissionRule;
 	
-	private TransactionComputeRuleCondition transactionRouteCommissionRule;
+	private RouteComputeCondition transactionRouteCommissionRule;
 	
 	private CommissionRule(Builder builder) {
 		carCommissionRule = builder.carCommissionRule;
@@ -52,11 +52,11 @@ public class CommissionRule extends AbstractRule{
 		this.personCommissionRule = personCommissionRule;
 	}
 
-	public TransactionComputeRuleCondition getTransactionRouteCommissionRule() {
+	public RouteComputeCondition getTransactionRouteCommissionRule() {
 		return transactionRouteCommissionRule;
 	}
 
-	public void setTransactionRouteCommissionRule(TransactionComputeRuleCondition transactionRouteCommissionRule) {
+	public void setTransactionRouteCommissionRule(RouteComputeCondition transactionRouteCommissionRule) {
 		this.transactionRouteCommissionRule = transactionRouteCommissionRule;
 	}
 
@@ -67,7 +67,7 @@ public class CommissionRule extends AbstractRule{
 		
 		private PersonRuleCondition personCommissionRule;
 		
-		private TransactionComputeRuleCondition transactionRouteCommissionRule;
+		private RouteComputeCondition transactionRouteCommissionRule;
 
 		public Builder setCarCommissionRule(CarRuleCondition carCommissionRule) {
 			this.carCommissionRule = carCommissionRule;
@@ -84,7 +84,7 @@ public class CommissionRule extends AbstractRule{
 			return this;
 		}
 
-		public Builder setTransactionRouteCommissionRule(TransactionComputeRuleCondition transactionRouteCommissionRule) {
+		public Builder setTransactionRouteCommissionRule(RouteComputeCondition transactionRouteCommissionRule) {
 			this.transactionRouteCommissionRule = transactionRouteCommissionRule;
 			return this;
 		}

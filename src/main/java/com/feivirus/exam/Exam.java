@@ -1,5 +1,10 @@
 package com.feivirus.exam;
 
+/**
+ * 面试题研究
+ * @author feivirus
+ *
+ */
 class A{  
 	  
     static{  
