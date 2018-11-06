@@ -4,6 +4,7 @@ import static java.util.stream.Collectors.toList;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 import org.junit.Assert;
@@ -25,13 +26,18 @@ public class AppleTest {
 	public void testFilterApples() {
 		List<Apple> inventory = new ArrayList<Apple>();
 		
+		//我觉得经历了 方法->类->自动产生策略模式的接口实现类 转换
 		Apple.filterApples(inventory, Apple::isGreenApple);
 		Apple.filterApples(inventory, Apple::isHeavyApple);
 		
 		//lambda简写,匿名函数
+		//我觉得经历了 匿名方法->匿名类->自动产生策略模式的接口实现类  转换
 		Apple.filterApples(inventory, (Apple a) -> Color.GREEN.getName().equals(a.getColor()));
 		Apple.filterApples(inventory, (Apple a) -> a.getWeight() < Apple.STANDARD_APPLE_WEIGHT || 
-				Color.GREEN.getName().equals(a.getColor()));		
+				Color.GREEN.getName().equals(a.getColor()));
+		
+		Comparator<Apple> byWeight = (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight());
+		
 	}
 	
 	@Test

@@ -58,7 +58,7 @@ public class Apple {
 	/**
 	 * 第三种写法，基于策略模式
 	 * 行为参数化 
-	 *
+	 * 函数式接口:只定义一个抽象方法的接口
 	 */
 	public interface ApplePredicate{
 		boolean test(Apple apple);
