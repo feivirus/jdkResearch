@@ -1,5 +1,4 @@
-package com.feivirus.ruleValidator;
-
+package com.feivirus.rule;
 
 import java.util.ArrayList;
 import java.util.List;
