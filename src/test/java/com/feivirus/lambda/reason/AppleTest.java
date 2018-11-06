@@ -31,10 +31,22 @@ public class AppleTest {
 		//lambda简写,匿名函数
 		Apple.filterApples(inventory, (Apple a) -> Color.GREEN.getName().equals(a.getColor()));
 		Apple.filterApples(inventory, (Apple a) -> a.getWeight() < Apple.STANDARD_APPLE_WEIGHT || 
-				Color.GREEN.getName().equals(a.getColor()));
+				Color.GREEN.getName().equals(a.getColor()));		
+	}
+	
+	@Test
+	public void testFilter() {
+		List<Apple> inventory = new ArrayList<>();
 		
-		//调用lambda库
-		//filter(inventory, (Apple a) -> a.getWeight() > STANDARD_APPLE_WEIGHT);
+		Apple.filter(inventory, Apple::isGreenApple);		
+		Apple.filter(inventory, (Apple a) -> a.getWeight() > Apple.STANDARD_APPLE_WEIGHT);
+		
+		List<Integer> intList = Arrays.asList(new Integer(1), 
+				new Integer(2),
+				new Integer(3));
+		
+		List<Integer> result = Apple.filter(intList, (Integer i) -> i % 2 == 0);
+		Assert.assertTrue(result.size() > 0);
 	}
 	
 	/**

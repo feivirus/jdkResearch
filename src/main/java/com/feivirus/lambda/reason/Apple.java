@@ -101,8 +101,28 @@ public class Apple {
 	}
 	
 	/**
+	 * 第四种写法,基于匿名类
+	 * 
+	 */
+	public void filterApplesWithAnonymousClass() {
+		List<Apple> inventory = new ArrayList<>();
+		
+		List<Apple> redApples = filterApplesWithStrategy(inventory, new ApplePredicate () {
+			@Override
+			public boolean test(Apple apple) {				
+				return apple.getColor().equals(Color.RED.getName());
+			}			
+		});
+	}
+	
+	/**
 	 * after java 8
+	 * 第五种写法
+	 * 
 	 * 基于lambda表达式
+	 * 虽然filterApples的参数是接口ApplePredicate,但是调用时
+	 * 可以传入的实参可以是Apple::isGreenApple方法，或者匿名方法,在AppleTest类中
+	 * 前提是ApplePredicate类中只有一个放回布尔值的方法
 	 * @param apple
 	 * @return
 	 */
@@ -112,25 +132,46 @@ public class Apple {
 	
 	public static boolean isHeavyApple(Apple apple) {
 		return apple.getWeight() > STANDARD_APPLE_WEIGHT;
-	}
-	
-	public interface Predicate<T> {
-		boolean test(T t);
-	}
+	}	
 	
 	/**
 	 * 测试用例
 	 * {@link com.feivirus.lambda.reason.AppleTest.testFilterApples()}
+	 * 
 	 * @param inventory
 	 * @param p
 	 * @return
 	 */
-	public static List<Apple> filterApples(List<Apple> inventory, Predicate<Apple> p) {
+	public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate p) {
 		List<Apple> result = new ArrayList<Apple>();
 		
 		for(Apple apple : inventory) {
 			if (p.test(apple)) {
 				result.add(apple);
+			}
+		}
+		return result;
+	}
+	
+	/**
+	 * 第六种写法
+	 * 方法实现时通过 策略模式+泛型
+	 * 方法调用时实参 传入方法
+	 * 因为有泛型,不只适用于Apple类
+	 * 
+	 * 测试用例 {@link com.feivirus.lambda.reason.AppleTest.testFilter()}
+	 * @param <T>
+	 */
+	public interface Predicate<T> {
+		boolean test(T t);
+	}
+	
+	public static <T> List<T> filter(List<T> inventory, Predicate<T> obj) {
+		List<T> result = new ArrayList<>();
+		
+		for(T t : inventory) {
+			if (obj.test(t)) {
+				result.add(t);
 			}
 		}
 		return result;
