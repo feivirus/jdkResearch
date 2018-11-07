@@ -13,6 +13,14 @@ public class Apple {
 	
 	public final static Integer STANDARD_APPLE_WEIGHT = 150;
 	
+	public Apple() {
+		
+	}
+	
+	public Apple(Integer weigth) {
+		this.weight = weigth;
+	}
+	
 	public Apple (String color, Integer weight) {
 		this.color = color;
 		this.weight = weight;

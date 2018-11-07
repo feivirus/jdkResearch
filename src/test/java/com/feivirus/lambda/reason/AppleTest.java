@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-
+import java.util.Comparator.*;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -38,6 +38,8 @@ public class AppleTest {
 		
 		Comparator<Apple> byWeight = (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight());
 		
+		//lambda方法引用
+		inventory.sort(Comparator.comparing(Apple::getWeight));
 	}
 	
 	@Test
