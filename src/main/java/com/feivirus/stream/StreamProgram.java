@@ -24,7 +24,7 @@ import org.hamcrest.Condition.Step;
  * 3.集合与流。 就像顺序播放DVD与流媒体。集合会把所有元素加载内存。流式延迟处理的集合，需要计算时才加载.
  * 4.有点类似builder模式,数据源->中间操作链(filter)->终端操作(collect)
  * 5.流特化,避免装箱拆箱,mapToInt
- * 6.常用的收集器count,maxBy,summingDouble,joining,averagingDouble
+ * 6.常用的收集器count,maxBy,summingDouble,joining,averagingDouble,toList,toSet,toCollection
  * 7.多级分组，分区
  */
 public class StreamProgram {
