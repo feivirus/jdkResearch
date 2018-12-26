@@ -13,6 +13,6 @@ package com.feivirus.statemachine;
  * 5.http://unimod.sourceforge.net/fsm-framework.html
  * 6.http://www.blogjava.net/caizh2009/archive/2010/07/26/327157.html
  */
-public class StateMachine {
+public class StateMachineMain {
 
 }
