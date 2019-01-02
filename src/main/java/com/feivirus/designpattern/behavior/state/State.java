@@ -9,6 +9,8 @@ package com.feivirus.designpattern.behavior.state;
  * 备注:
  * 1.触发关门动作,关门动作的业务代码在OpenDoorLiftState.closeDoor()执行还是在CloseDoorLiftState.closeDoor()中
  * 执行，值得讨论
+ * 2.状态切换谁触发是state还是context值得讨论
+ * 3.state状态是提前创建还是用到时再创建值得讨论
  */
 public class State {	
 	public static void main(String[] args) {
