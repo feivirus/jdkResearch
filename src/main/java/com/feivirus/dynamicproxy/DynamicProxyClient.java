@@ -11,7 +11,7 @@ public class DynamicProxyClient {
 		Subject proxySubject = (Subject)Proxy.newProxyInstance(handler.getClass().getClassLoader(), 
 				realSubject.getClass().getInterfaces(), 
 				handler);
-		System.out.println(proxySubject.getClass().getName());
+		System.out.println("proxyClassName: " + proxySubject.getClass().getName());
 		proxySubject.rent();
 		proxySubject.hello("feivirus");
 	}

@@ -12,9 +12,11 @@ package com.feivirus.statemachine;
  * 上下文
  * @param <C>
  */
-public interface StateMachine<T extends StateMachine<T, E, S, C>, E, S, C> {
+public interface StateMachine<T extends StateMachine<T, S, E, C>, S, E, C> {
 	//触发事件
 	void fire(E event);
+	
+	void fire(E event, C context);
 	
 	void start();
 }

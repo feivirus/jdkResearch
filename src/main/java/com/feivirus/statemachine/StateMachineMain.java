@@ -1,5 +1,9 @@
 package com.feivirus.statemachine;
 
+import com.feivirus.statemachine.annotation.StateMachineBinder;
+import com.feivirus.statemachine.impl.AbstractStateMachine;
+import com.feivirus.statemachine.impl.StateMachineBuilderImpl;
+
 /**
  * 
  * 自动机
@@ -17,7 +21,23 @@ package com.feivirus.statemachine;
  * https://www.jianshu.com/p/326bd3ac2bf2?winzoom=1 spring statemachine
  */
 public class StateMachineMain {
+	enum SampleEvent {
+		ToA, ToB, ToC, ToD
+	}
+	
+	@StateMachineBinder(stateType = String.class, eventType = SampleEvent.class, contextType = Integer.class)
+	private static class StateMachineSample extends AbstractStateMachine<SingleStateMachine, Object, Object, Object> {
+		protected void fromAToB(String from, String to, SampleEvent event, Integer context) {
+			System.out.println("Transition from " + from + " to " + to + " on event "
+					+ event + " with context " + context);
+		}		
+	}
+	
 	public static void main(String[] args) {
-		SingleStateMachineBuilder builder = null;
+		StateMachineBuilder builder = new StateMachineBuilderImpl(StateMachineSample.class, String.class, SampleEvent.class, Integer.class);
+		builder.singleTransition().from("A").to("B").on(SampleEvent.ToB).callMethod("fromAToB");
+		
+		StateMachine ssm = builder.newStateMachine("A");
+		ssm.fire(SampleEvent.ToB, 10);
 	}
 }
