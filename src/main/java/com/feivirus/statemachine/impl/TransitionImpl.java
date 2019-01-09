@@ -1,12 +1,16 @@
 package com.feivirus.statemachine.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.feivirus.statemachine.Action;
 import com.feivirus.statemachine.State;
 import com.feivirus.statemachine.StateMachine;
 import com.feivirus.statemachine.Transition;
 
 public class TransitionImpl<T extends StateMachine<T, S, E, C>, S, E, C> implements Transition<T, S, E, C>{
-
+	private List<Action<T, S, E, C>> actions = new ArrayList<>();
+	
 	protected TransitionImpl() {
 	}
 	
@@ -30,7 +34,6 @@ public class TransitionImpl<T extends StateMachine<T, S, E, C>, S, E, C> impleme
 
 	@Override
 	public void addAction(Action<T, S, E, C> newAction) {
-		// TODO Auto-generated method stub
-		
+		actions.add(newAction);
 	}
 }

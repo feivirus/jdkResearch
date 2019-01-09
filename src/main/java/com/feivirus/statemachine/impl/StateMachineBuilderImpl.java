@@ -43,7 +43,36 @@ public class StateMachineBuilderImpl<T extends StateMachine<T, S, E, C>, S, E, C
 
 	@Override
 	public T newStateMachine(S stateId, Object... constructorParam) {
-		// TODO Auto-generated method stub
-		return null;
+		if (!valideState(stateId)) {
+			throw new IllegalArgumentException("cannot find state " + stateId);
+		}
+		
+		Class<?>[] paramTypes = constructor.getParameterTypes();
+		T stateMachine;
+		try {
+			if (paramTypes == null || 
+				paramTypes.length == 0) {
+				stateMachine = ReflectionUtil.newInstance(constructor);
+			} else {
+				stateMachine = ReflectionUtil.newInstance(constructor, constructorParam);
+			}
+		} catch (Exception e) {
+			throw new IllegalStateException("new state machine instance failed" + e.getMessage());
+		}		
+		
+		return stateMachine;
+	}
+
+	@Override
+	public T newStateMachine(S stateId) {
+		return newStateMachine(stateId, new Object[0]);
 	}	
+	
+	private boolean valideState(S stateId) {
+		if (stateId != null &&
+			states.get(stateId) != null) {
+			return true;
+		}
+		return false;
+	}
 }

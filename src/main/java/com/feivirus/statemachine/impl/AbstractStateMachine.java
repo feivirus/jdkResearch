@@ -18,7 +18,10 @@ public abstract class AbstractStateMachine<T extends StateMachine<T, S, E, C>, S
 
 	@Override
 	public void fire(E event, C context) {
-		// TODO Auto-generated method stub
-		
+		fire(event, context, false);
 	}		
+	
+	public void fire(E event, C context, boolean insertFirst) {
+		
+	}
 }
