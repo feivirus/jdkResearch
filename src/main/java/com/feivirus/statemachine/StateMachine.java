@@ -19,4 +19,10 @@ public interface StateMachine<T extends StateMachine<T, S, E, C>, S, E, C> {
 	void fire(E event, C context);
 	
 	void start();
+	
+	void start(C context);
+	
+	boolean isStarted();
+	
+	T getThis();
 }
