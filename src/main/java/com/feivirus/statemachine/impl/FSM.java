@@ -1,5 +1,6 @@
 package com.feivirus.statemachine.impl;
 
+import java.lang.reflect.Method;
 import java.util.Map;
 
 import com.feivirus.statemachine.ActionExecutionService;
@@ -13,8 +14,8 @@ import com.feivirus.statemachine.TransitionResult;
 
 public abstract class FSM {
 	static <T extends StateMachine<T, S, E, C>, S, E, C> SingleTransitionBuilder<T, S, E, C> newSingleTransitionBuilder(
-			Map<S, State<T, S, E, C>> states) {
-		return new TransitionBuilderImpl(states);
+			Map<S, State<T, S, E, C>> states, ExecutionContext executionContext) {
+		return new TransitionBuilderImpl<T, S, E, C>(states, executionContext);
 	}
 	
 	static <T extends StateMachine<T, S, E, C>, S, E, C> State<T, S, E, C> getState(
@@ -23,21 +24,28 @@ public abstract class FSM {
 			State<T, S, E, C> state = states.get(stateId);
 			if (state == null) {
 				state = FSM.newState(stateId);
+				states.put(stateId, state);
 			}
 			return state;
 	}
 	
 	static <T extends StateMachine<T, S, E, C>, S, E, C> State<T, S, E, C> newState(S stateId) {
-		return new StateImpl(stateId);
+		return new StateImpl<T, S, E, C>(stateId);
 	}
 	
 	static <T extends StateMachine<T, S, E, C>, S, E, C> Transition<T, S, E, C> newTransition() {
-		return new TransitionImpl();
+		return new TransitionImpl<T, S, E, C>();
+	}
+	
+	static <T extends StateMachine<T, S, E, C>, S, E, C> ActionImpl<T, S, E, C> newActionImpl(
+			Method method, 
+			ExecutionContext executionContext) {
+		return new  ActionImpl<T, S, E, C>(method, executionContext);
 	}
 	
 	static <T extends StateMachine<T, S, E, C>, S, E, C> ActionProxyImpl<T, S, E, C> newActionProxyImpl(
-			String methodName) {
-		return new ActionProxyImpl(methodName);
+			String methodName, ExecutionContext executionContext) {
+		return new ActionProxyImpl<T, S, E, C>(methodName, executionContext);
 	}
 	
 	static <T extends StateMachine<T, S, E, C>, S, E, C> TransitionResult<T, S, E, C> newResult(

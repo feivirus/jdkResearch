@@ -1,6 +1,7 @@
 package com.feivirus.statemachine.impl;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,10 +16,17 @@ public class StateMachineBuilderImpl<T extends StateMachine<T, S, E, C>, S, E, C
 	
 	private Constructor<? extends T> constructor;
 	
+	private ExecutionContext executionContext;
+	
+	//用户定义的状态机的from, to, event, context类型,作为用户定义回调的参数类型,反射调用
+	private Class<?>[] actionParamTypes;
+	
 	public StateMachineBuilderImpl(Class<? extends T> stateMachineImplClazz,
 			Class<S> stateClazz, Class<E> eventClazz, Class<C> contextClazz,
 			Class<?>...constructorParams) {
 		constructor = extractConstructor(stateMachineImplClazz, constructorParams);
+		actionParamTypes = new Class<?>[] {stateClazz, stateClazz, eventClazz, contextClazz};
+		executionContext = new ExecutionContext(stateMachineImplClazz, actionParamTypes);
 	}
 	
 	private <T> Constructor<? extends T> extractConstructor(Class<T> type, Class<?>[] paramTypes) {
@@ -38,7 +46,7 @@ public class StateMachineBuilderImpl<T extends StateMachine<T, S, E, C>, S, E, C
 	
 	@Override
 	public SingleTransitionBuilder<T, S, E, C> singleTransition() {		
-		return FSM.newSingleTransitionBuilder(states);
+		return FSM.newSingleTransitionBuilder(states, executionContext);
 	}
 
 	@Override
@@ -74,5 +82,21 @@ public class StateMachineBuilderImpl<T extends StateMachine<T, S, E, C>, S, E, C
 			return true;
 		}
 		return false;
+	}
+	
+	public static Method searchMethod(Class<?> targetClass, Class<?> superClass,
+			String methodName, Class<?>[] parameterType) {
+		if (superClass.isAssignableFrom(targetClass)) {
+			Class<?> clazz = targetClass;
+			
+			while (!superClass.equals(clazz)) {
+				try {
+					return clazz.getDeclaredMethod(methodName, parameterType);
+				} catch (Exception e) {
+					clazz = clazz.getSuperclass();
+				}				
+			}
+		}
+		return null;
 	}
 }

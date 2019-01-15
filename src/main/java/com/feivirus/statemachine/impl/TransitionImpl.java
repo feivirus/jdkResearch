@@ -24,20 +24,17 @@ public class TransitionImpl<T extends StateMachine<T, S, E, C>, S, E, C> impleme
 	
 	@Override
 	public void setSourceState(State<T, S, E, C> state) {
-		// TODO Auto-generated method stub
-		
+		fromState = state;
 	}
 
 	@Override
 	public void setTargetState(State<T, S, E, C> state) {
-		// TODO Auto-generated method stub
-		
+		toState = state;
 	}
 
 	@Override
 	public void setEvent(E event) {
-		// TODO Auto-generated method stub
-		
+		this.event = event;
 	}
 
 	@Override

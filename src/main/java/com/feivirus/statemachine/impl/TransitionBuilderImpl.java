@@ -17,8 +17,11 @@ public class TransitionBuilderImpl<T extends StateMachine<T, S, E, C>, S, E, C> 
 	
 	private Map<S, State<T, S, E, C>> states;	
 	
-	public TransitionBuilderImpl(Map<S, State<T, S, E, C>> states) {
+	private ExecutionContext executionContext;
+	
+	public TransitionBuilderImpl(Map<S, State<T, S, E, C>> states, ExecutionContext executionContext) {
 		this.states = states;
+		this.executionContext = executionContext;
 	}
 	
 	/**
@@ -46,7 +49,7 @@ public class TransitionBuilderImpl<T extends StateMachine<T, S, E, C>, S, E, C> 
 
 	@Override
 	public SingleTransitionBuilder<T, S, E, C> callMethod(String methodName) {
-		Action<T, S, E, C> action = FSM.newActionProxyImpl(methodName);
+		Action<T, S, E, C> action = FSM.newActionProxyImpl(methodName, executionContext);
 		transition.addAction(action);
 		return this;
 	}

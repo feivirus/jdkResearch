@@ -1,6 +1,8 @@
 package com.feivirus.statemachine.util;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class ReflectionUtil {
 	
@@ -42,5 +44,25 @@ public class ReflectionUtil {
 			constructor.setAccessible(oldAccessible);
 		}
 		return null;
+	}
+	
+	public static Object invoke(Method method, Object target, Object[] args) {
+		if (method == null) {
+			throw new IllegalArgumentException();
+		}
+		boolean oldAccessible = method.isAccessible();
+		
+		try {
+			if (method.isAccessible() == false) {
+				method.setAccessible(true);
+			}
+			return method.invoke(target, args);
+		} catch (InvocationTargetException ex) {
+			throw new RuntimeException(ex);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		} finally {
+			method.setAccessible(oldAccessible);
+		}
 	}
 }
