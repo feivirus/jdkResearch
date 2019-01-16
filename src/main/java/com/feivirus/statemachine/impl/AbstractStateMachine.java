@@ -183,7 +183,9 @@ public abstract class AbstractStateMachine<T extends StateMachine<T, S, E, C>, S
 			//接受状态转换，调用用户提供的回调方法
 			if (result.isAccepted()) {
 				executionService.execute();
-			}
+				localData.write().currentState(toStateId);
+				return true;
+			}			
 		} catch (Exception ex) {
 			
 		}finally {

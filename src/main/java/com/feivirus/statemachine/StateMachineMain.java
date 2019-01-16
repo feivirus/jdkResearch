@@ -31,14 +31,22 @@ public class StateMachineMain {
 		protected void fromAToB(String from, String to, SampleEvent event, Integer context) {
 			System.out.println("Transition from " + from + " to " + to + " on event "
 					+ event + " with context " + context);
-		}		
+		}	
+		
+		protected void fromBToC(String from, String to, SampleEvent event, Integer context) {
+			System.out.println("Transition from " + from + " to " + to + " on event "
+					+ event + " with context " + context);
+		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		StateMachineBuilder builder = new StateMachineBuilderImpl(StateMachineSample.class, String.class, SampleEvent.class, Integer.class);
 		builder.singleTransition().from("A").to("B").on(SampleEvent.ToB).callMethod("fromAToB");
+		builder.singleTransition().from("B").to("C").on(SampleEvent.ToC).callMethod("fromBToC");
 		
 		StateMachine ssm = builder.newStateMachine("A");
 		ssm.fire(SampleEvent.ToB, 10);
+		ssm.fire(SampleEvent.ToC, 20);
 	}
 }
