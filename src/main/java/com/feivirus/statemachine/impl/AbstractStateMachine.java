@@ -1,5 +1,7 @@
 package com.feivirus.statemachine.impl;
 
+import java.util.Map;
+import java.util.Stack;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -25,6 +27,8 @@ public abstract class AbstractStateMachine<T extends StateMachine<T, S, E, C>, S
 	private StateMachineData<T, S, E, C> data;
 	
 	private ActionExecutionService<T, S, E, C> executor = new ExecutionServiceImple<>();
+	
+	private E startEvent, finishEvent, terminateEvent;
 	
 	@Override
 	public boolean isStarted() {
@@ -101,8 +105,34 @@ public abstract class AbstractStateMachine<T extends StateMachine<T, S, E, C>, S
 		if (isStarted()) {
 			return;
 		}
-		//TODO 读历史状态
+		// 读历史状态,在做转换前，先一步步走到最新状态
+		setStatus(StateMachineStatus.BUSY);
+		internalStart(context, data, executor);
+		setStatus(StateMachineStatus.IDLE);
+		processEvents();
+	}
+	
+	private void internalStart(C context, StateMachineData<T, S, E, C> oldData, 
+			ActionExecutionService<T, S, E, C> executionService) {
+		State<T, S, E, C> initialState = oldData.read().initialStateFromUser();
+		StateContext<T, S, E, C> stateContext = FSM.newStateContext(this, oldData, initialState, 
+				startEvent, context, null, executionService);
+		entryAll(initialState, stateContext);
+		executionService.execute();
+		data.write().currentState(initialState.getStateId());		
+	}
+	
+	private void entryAll(State<T, S, E, C> from, StateContext<T, S, E, C> stateContext) {
+		Stack<State<T, S, E, C>> stack = new Stack<>();
+		State<T, S, E, C> state = from;
 		
+		//TODO 依次处理历史状态		
+		stack.push(state);			
+	
+		while (stack.size() > 0) {
+			state = stack.pop();
+			state.entry(stateContext);
+		}
 	}
 	
 	private void processEvents() {
@@ -138,7 +168,7 @@ public abstract class AbstractStateMachine<T extends StateMachine<T, S, E, C>, S
 	private boolean processEvent(E event, C context, StateMachineData<T, S, E, C> oldData,
 			ActionExecutionService<T, S, E, C> executionService) {
 		StateMachineData<T, S, E, C> localData = oldData;
-		State<T, S, E, C> fromState = localData.read().currentState();
+		State<T, S, E, C> fromState = localData.read().currentStateFromUser();
 		S fromStateId = fromState.getStateId();
 		S toStateId = null;
 		
@@ -166,4 +196,10 @@ public abstract class AbstractStateMachine<T extends StateMachine<T, S, E, C>, S
 	public T getThis() {
 		return (T)this;
 	}	
+	
+	void postConstruct(S initialState, Map<S, ? extends State<T, S, E, C>> states, Runnable runnable) {
+		data = FSM.newStateMachineData(states);
+		data.write().initialState(initialState);
+		data.write().currentState(null);
+	}
 }

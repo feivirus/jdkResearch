@@ -25,7 +25,8 @@ public class StateMachineMain {
 		ToA, ToB, ToC, ToD
 	}
 	
-	@StateMachineBinder(stateType = String.class, eventType = SampleEvent.class, contextType = Integer.class)
+	//TODO 通过注解生成状态机
+	//@StateMachineBinder(stateType = String.class, eventType = SampleEvent.class, contextType = Integer.class)
 	private static class StateMachineSample extends AbstractStateMachine<SingleStateMachine, Object, Object, Object> {
 		protected void fromAToB(String from, String to, SampleEvent event, Integer context) {
 			System.out.println("Transition from " + from + " to " + to + " on event "

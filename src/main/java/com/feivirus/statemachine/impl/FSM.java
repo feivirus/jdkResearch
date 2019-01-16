@@ -11,6 +11,7 @@ import com.feivirus.statemachine.StateMachine;
 import com.feivirus.statemachine.StateMachineData;
 import com.feivirus.statemachine.Transition;
 import com.feivirus.statemachine.TransitionResult;
+import com.feivirus.statemachine.impl.StateMachineDataImpl;
 
 public abstract class FSM {
 	static <T extends StateMachine<T, S, E, C>, S, E, C> SingleTransitionBuilder<T, S, E, C> newSingleTransitionBuilder(
@@ -50,7 +51,10 @@ public abstract class FSM {
 	
 	static <T extends StateMachine<T, S, E, C>, S, E, C> TransitionResult<T, S, E, C> newResult(
 			boolean isAccepted, State<T, S, E, C> targetState) {
-		return new TransitionResultImpl<>();
+		TransitionResult<T, S, E, C> result = new TransitionResultImpl<>();
+		result.setAccepted(isAccepted);
+		result.setTargetState(targetState);		
+		return result;
 	}
 	
 	static <T extends StateMachine<T, S, E, C>, S, E, C> StateContext<T, S, E, C> newStateContext(
@@ -58,5 +62,10 @@ public abstract class FSM {
 			State<T, S, E, C> fromState, E event, C context, TransitionResult<T, S, E, C> result,
 			ActionExecutionService<T, S, E, C> executor) {
 		return new StateContextImpl<T, S, E, C>(stateMachine, data, fromState, event, context, result, executor);
+	}
+	
+	static <T extends StateMachine<T, S, E, C>, S, E, C> StateMachineData<T, S, E, C> newStateMachineData(
+			Map<S, ? extends State<T, S, E, C>> states) {
+		return new StateMachineDataImpl<T, S, E, C>(states);
 	}
 }

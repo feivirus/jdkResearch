@@ -21,12 +21,17 @@ public class StateMachineBuilderImpl<T extends StateMachine<T, S, E, C>, S, E, C
 	//用户定义的状态机的from, to, event, context类型,作为用户定义回调的参数类型,反射调用
 	private Class<?>[] actionParamTypes;
 	
+	private E startEvent, finishEvent, terminateEvent;
+	
+	private Class<? extends T> stateMachineImplClazz;
+	
 	public StateMachineBuilderImpl(Class<? extends T> stateMachineImplClazz,
 			Class<S> stateClazz, Class<E> eventClazz, Class<C> contextClazz,
 			Class<?>...constructorParams) {
 		constructor = extractConstructor(stateMachineImplClazz, constructorParams);
 		actionParamTypes = new Class<?>[] {stateClazz, stateClazz, eventClazz, contextClazz};
 		executionContext = new ExecutionContext(stateMachineImplClazz, actionParamTypes);
+		stateMachineImplClazz = stateMachineImplClazz;
 	}
 	
 	private <T> Constructor<? extends T> extractConstructor(Class<T> type, Class<?>[] paramTypes) {
@@ -68,6 +73,18 @@ public class StateMachineBuilderImpl<T extends StateMachine<T, S, E, C>, S, E, C
 			throw new IllegalStateException("new state machine instance failed" + e.getMessage());
 		}		
 		
+		//状态机初始化开始状态,放到StateMachineData里面
+		AbstractStateMachine<T, S, E, C> stateMachineImpl = (AbstractStateMachine<T, S, E, C>)stateMachine;
+		stateMachineImpl.postConstruct(stateId, states, new Runnable() {
+			
+			@Override
+			public void run() {
+				stateMachineImpl.setStartEvent(startEvent);
+				stateMachineImpl.setFinishEvent(finishEvent);
+				stateMachineImpl.setTerminateEvent(terminateEvent);
+			}
+		});
+		
 		return stateMachine;
 	}
 
@@ -98,5 +115,13 @@ public class StateMachineBuilderImpl<T extends StateMachine<T, S, E, C>, S, E, C
 			}
 		}
 		return null;
+	}
+	
+	private void installComponents() {
+		
+	}
+	
+	private void installStates() {
+		
 	}
 }

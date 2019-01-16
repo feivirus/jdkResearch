@@ -10,10 +10,21 @@ public interface StateMachineData <T extends StateMachine<T, S, E, C>, S, E, C> 
 	Writer<T, S, E, C> write();
 	
 	public interface Reader<T extends StateMachine<T, S, E, C>, S, E, C> extends Serializable {
-		State<T, S, E, C> currentState();
+		//从用户定义的状态S返回状态机的接口StateImpl
+		State<T, S, E, C> stateFromUser(S stateId);
+		
+		State<T, S, E, C> currentStateFromUser();
+		
+		State<T, S, E, C> initialStateFromUser();
+		
+		S currentState();
+		
+		S initialState();
 	}
 	
 	public interface Writer<T extends StateMachine<T, S, E, C>, S, E, C> extends Serializable {
+		void initialState(S stateId);
 		
+		void currentState(S stateId);
 	}
 }

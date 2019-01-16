@@ -29,7 +29,7 @@ public class ActionProxyImpl<T extends StateMachine<T, S, E, C>, S, E, C> implem
 	
 	@Override
 	public void execute(S from, S to, E event, C context, T stateMachine) {
-		proxy.execute(from, to, event, context, stateMachine);
+		getProxy().execute(from, to, event, context, stateMachine);
 	}
 	
 	//设置用户的代理方法
