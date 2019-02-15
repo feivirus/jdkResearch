@@ -1,7 +1,6 @@
 package com.feivirus.statemachine;
 
 import java.util.List;
-
 import com.feivirus.statemachine.StateMachine;
 
 public interface State<T extends StateMachine<T, S, E, C>, S, E, C> {
