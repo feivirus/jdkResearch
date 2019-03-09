@@ -7,5 +7,7 @@ package com.feivirus.commonclass;
  * 
  */
 public class StaticKeyword {
-
+    public void testLocal() {
+        Integer value = 10;
+    }
 }

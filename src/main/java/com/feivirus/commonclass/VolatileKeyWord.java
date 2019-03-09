@@ -6,6 +6,20 @@ package com.feivirus.commonclass;
  *
  */
 public class VolatileKeyWord {
+    int i = 0;
+    boolean flag = false;
+    
+    public void read() {
+        if (flag) {
+            System.out.println("flag true");
+        }
+    }
+    
+    public void write() {
+        i = 2;
+        flag = true;
+    }
+    
 	public static void main(String[] args) throws InterruptedException {
 		PrintString printString = new PrintString();
 		Thread thread = new Thread(printString);

@@ -4,6 +4,11 @@ import lombok.Data;
 
 public class ConditionOperator {
 	public static void main(String []args) {
+	    Integer count = 1;
+	    Long lCount = 124l;
+	    Object count2 = (Object) count;
+	    String str = "Hello World";
+	    
 		Customer customer = null;
 		
 		UserCarInfoTmp userCarinfoTmp = new UserCarInfoTmp();
