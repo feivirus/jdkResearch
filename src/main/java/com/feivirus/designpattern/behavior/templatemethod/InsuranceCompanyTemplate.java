@@ -1,6 +1,6 @@
 package com.feivirus.designpattern.behavior.templatemethod;
 
-public abstract class InsuranceCompany {
+public abstract class InsuranceCompanyTemplate {
     public void run() {
         quote();
         check();

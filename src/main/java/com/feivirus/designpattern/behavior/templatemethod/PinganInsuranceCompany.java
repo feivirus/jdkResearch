@@ -1,6 +1,6 @@
 package com.feivirus.designpattern.behavior.templatemethod;
 
-public class PinganInsuranceCompany extends InsuranceCompany{
+public class PinganInsuranceCompany extends InsuranceCompanyTemplate{
 
     @Override
     public void quote() {
