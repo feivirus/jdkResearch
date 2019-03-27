@@ -5,6 +5,7 @@ package com.feivirus.designpattern.structure.adapter;
  * @author feivirus
  * 参考链接
  * https://www.ibm.com/developerworks/cn/java/j-lo-adapter-pattern/
+ * https://www.cnblogs.com/V1haoge/p/6479118.html
  * 场景:
  * 1.用于解决两个已有的接口不兼容问题，被适配的类是一个黑盒子，常用于现有系统与第三方产品功能集成
  * 2.讲客户类的请求转化为适配者相应接口的调用,别名为wrapper包装器.

@@ -45,12 +45,12 @@ public class CodeSpecification {
 	 * 18.Mybatis的sql语句里面不用map，只用xxxDTO，map看不出来参数具体是什么
 	 * 19.业务代码里面不包含main方法，统一写junit单元测试
 	 * 20.接口和实现类的命名有两套规则,实现类和接口不一定, 也不建议要采用 Service -> ServiceImpl的对应方式, 
-	 * 因为这样做会让设计的局限性很大, 大家可以参考一下Spring里面的命名方式
+	 * 因为这样做会让设计的局限性很大, 可以参考一下Spring里面的命名方式
 		BeanDefinition -> RootBeanDefinition
 		BeanDefinition -> GenericBeanDefinition
 		//这种命名就非常形象,容易理解
 	 * 21.业务抛出异常抛出RuntimeException类的子类
-	 * 22.mysql建表必备字段 d, create_time, creator, modify_time, modifier, deleted_id(或者sys_flag)
+	 * 22.mysql建表必备字段 d, add_time, creator, modify_time, modifier, deleted_id(或者sys_flag)
 	 * 23.超过三个表禁止 join。需要 join 的字段，数据类型必须绝对一致;多表关联查询时， 保证被关联的字段需要有索引
 	 * 24.mybatis所有的更新, 必须使用 MyBatis里面的 Mapper, updateXXXXSelective
 	 * 25.比如导入结果ImportResult记录，用ImportResult还是用ImportResultDTO
