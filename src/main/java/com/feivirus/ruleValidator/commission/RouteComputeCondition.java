@@ -12,8 +12,6 @@ import com.feivirus.ruleValidator.base.RuleCondition;
 import com.feivirus.ruleValidator.base.RuleRelationEnum;
 import com.feivirus.ruleValidator.base.annotation.RuleConditionChecker;
 import com.feivirus.ruleValidator.base.annotation.RuleConditionCheckerType;
-//import com.ideacome.common.enums.BusinessType;
-//import com.ideacome.common.enums.CarTypeEnum;
 import com.feivirus.ruleValidator.enums.QuoteTypeEnum;
 
 /**

@@ -15,7 +15,7 @@ guard,executor,xx pool,xxx convertor util,helper,binder,xxx parser,channel,batch
 accumulator,interceptor,sender,receiver,request,response,client,server,selector,
 callback,flush,serializer,metadata,xxx config,parseAndValidateAddress,main,bootstrap,
 send,onSend,doSend,internalSend,onSendError,Info,Data,defaultXXX,assignor委托人,raise,fetcher,
-dump xxx,
+dump xxx,practicer,xxxTran事务操作.
 接口 impl,api
 分层 entity,dao
 设计模式 factory,chain,builder,abstract,facade,observer,adaptor,decorator,redirector,

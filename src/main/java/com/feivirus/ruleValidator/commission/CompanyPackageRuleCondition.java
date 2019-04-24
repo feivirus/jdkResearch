@@ -6,7 +6,6 @@ import java.util.List;
 import com.feivirus.ruleValidator.dto.LevelGroup;
 import com.feivirus.ruleValidator.dto.PackageItemDTO;
 import com.feivirus.ruleValidator.dto.ValueRange;
-//import com.ideacome.common.enums.RenewalEnum;
 import com.feivirus.ruleValidator.base.RuleCondition;
 import com.feivirus.ruleValidator.base.RuleRelationEnum;
 import com.feivirus.ruleValidator.base.annotation.RuleConditionChecker;
