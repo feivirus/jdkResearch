@@ -20,6 +20,13 @@ public class Adapter {
 		Log fileLog = new Log();		
 		LogFileApi logFileApi = new LogFileImpl();
 		
+		/**
+		 * LogFileApi是旧的接口
+		 * LogDBApi是新的接口
+		 * LogAdapter适配器类,含有旧的接口的引用,实现新的接口,可以被新接口直接调用
+		 * 按照新的业务，继续调用接口的功能
+		 * 最后的实际调用方式作为新接口定义,适配器类实现的是最后实际运行的接口
+		 */
 		LogDBApi logDBApi = new LogAdapter(logFileApi);
 		logDBApi.createLog(fileLog);
 		

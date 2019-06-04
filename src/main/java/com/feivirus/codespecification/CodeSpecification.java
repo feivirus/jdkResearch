@@ -15,7 +15,7 @@ guard,executor,xx pool,xxx convertor util,helper,binder,xxx parser,channel,batch
 accumulator,interceptor,sender,receiver,request,response,client,server,selector,
 callback,flush,serializer,metadata,xxx config,parseAndValidateAddress,main,bootstrap,
 send,onSend,doSend,internalSend,onSendError,Info,Data,defaultXXX,assignor委托人,raise,fetcher,
-dump xxx,practicer,xxxTran事务操作.
+dump xxx,practicer,xxxTran事务操作. abstract 类中，一般xxx方法是父类业务，doxxx是虚拟方法，被子类覆盖.
 接口 impl,api
 分层 entity,dao
 设计模式 factory,chain,builder,abstract,facade,observer,adaptor,decorator,redirector,
@@ -57,6 +57,8 @@ public class CodeSpecification {
 	 * TODO
 	 * 26.?变量或者类命名用AbstractConvertProcessor动词 + 名词形式，还是AbstractConvertorProcessor
 	 * 	  名词 + 名词形式,待定
+	 * 27.只要是Manager,条件反射定义成接口，虚拟类实现ManagerBase,实际业务类xxxManager,继承自Manager,
+	 * 默认通过StandardManager实现.
 	 */
  
 }
