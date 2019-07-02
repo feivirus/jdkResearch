@@ -24,6 +24,7 @@ public class WordCount {
 
 		/***
 		 * value的默认输入是文本的一行数据, key是偏移量
+		 * context.write(key,value).其中，key是用户输出的key,value
 		 */
 		@Override
 		public void map(Object key, Text value, Mapper<Object, Text, Text, IntWritable>.Context context)
@@ -42,7 +43,9 @@ public class WordCount {
 		private IntWritable result = new IntWritable();
 
 		/***
+		 * key是map中输出的key
 		 * values 同一个key对应的所有值
+		 * context.write(key,value)是用户要输出的key,value
 		 */
 		@Override
 		protected void reduce(Text key, Iterable<IntWritable> values,
@@ -59,6 +62,8 @@ public class WordCount {
 		
 	public static void main(String[] args) throws Exception{
 		Configuration configuration = new Configuration();
+		configuration.set("fs.defaultFS", "hdfs://127.0.0.1:8020");
+	    
 		String[] otherArgStrings = new GenericOptionsParser(configuration, args).getRemainingArgs();
 		
 		if (otherArgStrings.length < 2) {
