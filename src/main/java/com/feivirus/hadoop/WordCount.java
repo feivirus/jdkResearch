@@ -20,6 +20,7 @@ public class WordCount {
 	public static class TokenizerMapper extends Mapper<Object, Text, Text, IntWritable> {
 		private final static IntWritable one = new IntWritable(1);
 		
+		//作为成员变量的原因是数据量大时，不用在map中每次都生成一个对象
 		private Text word = new Text();
 
 		/***

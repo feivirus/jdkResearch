@@ -11,3 +11,4 @@ src/main/resources/mybatis/generate/*
 generate/*
 src/main/java/cn/shibei/core/controller/TestController.java
 src/main/resources/config/mysql.properties
+*.class
