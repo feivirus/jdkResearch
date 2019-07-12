@@ -16,6 +16,7 @@ accumulator,interceptor,sender,receiver,request,response,client,server,selector,
 callback,flush,serializer,metadata,xxx config,parseAndValidateAddress,main,bootstrap,
 send,onSend,doSend,internalSend,onSendError,Info,Data,defaultXXX,assignor委托人,raise,fetcher,
 dump xxx,practicer,xxxTran事务操作. abstract 类中，一般xxx方法是父类业务，doxxx是虚拟方法，被子类覆盖.
+xxxDispatcher,xxxEventDispatcher,xxxEventObject,xxxNotifier,xxxScheduler,xxNode,xxxLauncher
 接口 impl,api
 分层 entity,dao
 设计模式 factory,chain,builder,abstract,facade,observer,adaptor,decorator,redirector,

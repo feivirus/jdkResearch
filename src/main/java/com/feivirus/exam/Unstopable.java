@@ -1,5 +1,11 @@
 package com.feivirus.exam;
 
+/**
+ * 
+ * @author feivirus
+ * -server -Xcomp -XX:+UnlockDiagnosticVMOptions -XX:CompileCommand=dontinline,*Unstopable.run 
+ * -XX:CompileCommand=compileonly,*Unstopable.run -XX:+PrintAssembly
+ */
 public class Unstopable extends Thread {
     private boolean stop = false;
 
@@ -10,8 +16,9 @@ public class Unstopable extends Thread {
         while (!stop) {          
             //System.out.print("hello");
             i++;
-            if (i > 1000000) {
+            if (i > 10000000) {
                 //System.out.print("hello");
+               // break;
             }
         }
         System.out.println("run finish " + i);
