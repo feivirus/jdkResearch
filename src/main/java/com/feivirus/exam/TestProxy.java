@@ -17,7 +17,7 @@ public class TestProxy {
         MyInvocationHandler myInvocationHandler = new MyInvocationHandler(myOperation);
 
         IOperation operationProxy = (IOperation)Proxy.newProxyInstance(TestProxy.class.getClassLoader(), classes, myInvocationHandler);
-        operationProxy.doSomething();
+       //operationProxy.doSomething();
 
         testRun(operationProxy);
 
