@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -107,43 +108,50 @@
 			<artifactId>squirrel-foundation</artifactId>
 			<version>0.3.8</version>
 		</dependency>
-		
+
 		<dependency>
-		      <groupId>org.apache.hadoop</groupId>
-		      <artifactId>hadoop-hdfs</artifactId>
-		      <version>2.5.0</version>
-		  </dependency>
-		
-		  <dependency>  
-		      <groupId>org.apache.hadoop</groupId>  
-		      <artifactId>hadoop-client</artifactId>  
-		      <version>2.5.1</version>  
-		  </dependency> 
-		
-		  <dependency>
-		      <groupId>org.apache.hadoop</groupId>
-		      <artifactId>hadoop-common</artifactId>
-		      <version>2.5.0</version>
-		  </dependency>
-		  
-		  <dependency>
-		      <groupId>cglib</groupId>
-		      <artifactId>cglib</artifactId>
-		      <version>2.2.2</version>
-		  </dependency>
-		  
-		  <dependency>
-             <groupId>javax.enterprise</groupId>
-             <artifactId>cdi-api</artifactId>
-            <scope>provided</scope>
-            <version>1.2</version>
-         </dependency>
-         
-         <dependency>
-            <groupId>org.ansj</groupId>
-            <artifactId>ansj_seg</artifactId>
-            <version>5.1.1</version>
-        </dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-hdfs</artifactId>
+			<version>2.5.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-client</artifactId>
+			<version>2.5.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-common</artifactId>
+			<version>2.5.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<scope>provided</scope>
+			<version>1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.ansj</groupId>
+			<artifactId>ansj_seg</artifactId>
+			<version>5.1.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients -->
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-clients</artifactId>
+			<version>2.3.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
