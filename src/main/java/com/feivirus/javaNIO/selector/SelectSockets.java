@@ -14,7 +14,25 @@ import java.util.Iterator;
 /**
  * 
  * @author feivirus
- *
+ * 一.同步
+ * 1.block recv ->ready copy 每个连接一个线程
+ * 2.non-block recv(O_NONBLOCK, read立即返回错误码)-> ready? ready? ....copy
+ *    
+ * 二.异步
+ * 1.block io(jdk 1.4) multicomplex select 内部异步循环遍历所有连接,比如100万个 ready? 如果有ready,遍历所有，判断哪种事件
+ * epoll 如果100万个连接，加入红黑树，如果有些节点连接有ready事件。内核上抛这个数组，只遍历这些节点.
+ * 减少处理连接的数目,单个连接处理速度不会加快.
+ * 2.non-block aio(内核2.6版本,jdk 1.7版本), linux? window? iocp? 
+ * 
+ * 备注:
+ * netty不支持aio,原因:比epoll提高性能不多，破坏了netty的线程模型
+ * 
+ * 参考
+ * https://blog.csdn.net/historyasamirror/article/details/5778378
+ * https://segmentfault.com/a/1190000019055720?utm_source=tag-newest
+ * https://blog.csdn.net/lishenglong666/article/details/45536611
+ * https://blog.csdn.net/HDUTigerkin/article/details/7517390
+ * https://www.ibm.com/developerworks/cn/linux/l-async/#N10056
  */
 public class SelectSockets {
 	public static int PORT_NUMBER = 1234;
