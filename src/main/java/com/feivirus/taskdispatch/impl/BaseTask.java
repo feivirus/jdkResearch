@@ -8,7 +8,7 @@ import com.feivirus.taskdispatch.enums.TaskType;
  * @author feivirus
  *
  */
-public class BaseTask implements Task {
+public abstract class BaseTask implements Task {
     
     protected TaskType taskType;
 
