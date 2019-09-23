@@ -6,66 +6,108 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
 
 public class Phoenix {
-     static void testInsert(Connection connection) {
+    static void testInsert(Connection connection) {
         Statement statement = null;
-        int result  = 0;
-        
+        int result = 0;
+        String sqlUserA = "UPSERT INTO FEIVIRUS_TEST.DC_USER(id,name, PASSWORD) SELECT ID + ";
+        String sqlUserB = " ,NAME,PASSWORD FROM FEIVIRUS_TEST.DC_USER_1 WHERE id < 201";
+        //(2,2,1,2)
+        String sqlOrder = "UPSERT INTO FEIVIRUS_TEST.DC_ORDER(id,DC_USER_ID, ORDER_TYPE, DC_GOODS_ID)VALUES (";     
+        //1,'g1',1,8.8)
+        String sqlGood = "UPSERT INTO FEIVIRUS_TEST.DC_GOODS(id,GOODS_NAME, GOODS_CATEGORY, GOODS_PRICE)VALUES(";
+        int currentRow = 5003;
+        StringBuffer buffer = new StringBuffer();
+
         try {
             statement = connection.createStatement();
             connection.setAutoCommit(true);
-            
-            result = statement.executeUpdate("upsert into \"gps\" (\"ROW\", \"device_no\",\"latitude\", "
-                    + "\"longitude\", \"direction\", \"speed\", \"timestamp\", \"acc\") values('3','33456', '89.87', '99.89', 123.12, 60, 123123, 1)");
+//            result = statement.executeUpdate("upsert into \"gps\" (\"ROW\", \"device_no\",\"latitude\", "
+//                    + "\"longitude\", \"direction\", \"speed\", \"timestamp\", \"acc\") values('3','33456', '89.87', '99.89', 123.12, 60, 123123, 1)");            
+            while (currentRow <= 1000000) {
+                //user
+                //buffer.append(sqlUserA);
+                
+                //order
+                buffer.append(sqlOrder);
+                //id
+                buffer.append(currentRow);
+                buffer.append(",");
+                //dc_user_id
+                buffer.append(currentRow);
+                buffer.append(",1,");
+                //dc_goods_id
+                buffer.append(currentRow);
+                buffer.append(")");
+                //buffer.append(sqlUserB);
+                
+                //goods
+//                buffer.append(sqlGood);
+//                buffer.append(currentRow);
+//                buffer.append(",'g1',1,");
+//                buffer.append(currentRow);
+//                buffer.append(")");
+                
+                result = statement.executeUpdate(buffer.toString());
+                if (result > 0) {
+                    System.out.println("插入成功 " + currentRow);
+                } else {
+                    System.out.println("插入失败");
+                    break;
+                }
+                buffer.delete(0, buffer.length());
+                currentRow += 1;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
-        }        
-        
-        if (result == 1) {
-            System.out.println("插入成功");
-        } else {
-            System.out.println("插入失败");
-        }            
+        }
     }
-     
-     static void testSelect(Connection connection) {
-         try {
+
+    static void testSelect(Connection connection) {
+        try {
             PreparedStatement statement = connection.prepareStatement("select * from \"gps\"");
-            ResultSet resultSet = statement.executeQuery();
             
+            ResultSet resultSet = statement.executeQuery();
+
             while (resultSet.next()) {
                 String deviceNo = resultSet.getString("device_no");
-                //String deviceNo = resultSet.getString(2);
+                // String deviceNo = resultSet.getString(2);
                 Float direction = resultSet.getFloat("direction");
-                
+
                 System.out.println("deviceNo " + deviceNo + "  direction " + direction);
             }
-            
+
             resultSet.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-     }    
-    
+    }
+
     public static void main(String[] args) {
-        Connection connection = null;      
+        Connection connection = null;
 
         try {
             Class.forName("org.apache.phoenix.jdbc.PhoenixDriver");
-            connection = DriverManager.getConnection("jdbc:phoenix:192.168.1.192:2181", "", "");
-           
+            Properties properties = new Properties();
+            properties.setProperty("phoenix.schema.isNamespaceMappingEnabled", "true");
+            properties.setProperty("phoenix.schema.mapSystemTablesToNamespace", "true"); 
+            
+            connection = DriverManager.getConnection("jdbc:phoenix:192.168.1.192:2181", properties);    
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         testInsert(connection);
-        //testSelect(connection);
-        
+        // testSelect(connection);
+
         try {
             connection.close();
+           
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        System.out.println("over");
     }
 }
