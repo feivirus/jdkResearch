@@ -1,5 +1,10 @@
 package com.feivirus.exam;
 
+/**
+ * java中String, enum,Integer等包装类型,int等基本的数据类型是值传递，其他的对象都是引用传递
+ * @author feivirus
+ *
+ */
 public class ReferenceTest {
     public static void main(String[] args) {
         Demo test = null;
