@@ -67,16 +67,16 @@ public class Phoenix {
 
     static void testSelect(Connection connection) {
         try {
-            PreparedStatement statement = connection.prepareStatement("select * from \"gps\"");
+            PreparedStatement statement = connection.prepareStatement("explain SELECT * FROM DATA_CENTER.WAKANDA_GPS AS wg WHERE JNY_ID = '12019101100000001'");
             
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                String deviceNo = resultSet.getString("device_no");
+                String businessNo = resultSet.getString("business_no");
                 // String deviceNo = resultSet.getString(2);
-                Float direction = resultSet.getFloat("direction");
+                Float speed = resultSet.getFloat("SPEED");
 
-                System.out.println("deviceNo " + deviceNo + "  direction " + direction);
+                System.out.println("business_no " + businessNo + "  speed " + speed);
             }
 
             resultSet.close();
@@ -99,8 +99,8 @@ public class Phoenix {
             e.printStackTrace();
         }
 
-        testInsert(connection);
-        // testSelect(connection);
+        //testInsert(connection);
+         testSelect(connection);
 
         try {
             connection.close();
