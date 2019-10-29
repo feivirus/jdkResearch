@@ -9,6 +9,23 @@ import java.sql.Statement;
 import java.util.Properties;
 
 public class Phoenix {
+    static void testCreateIndex(Connection connection) {
+        Statement statement = null;
+        String sqlCreateIndex = "CREATE LOCAL INDEX IDX_WM_JNY_ID ON DATA_CENTER.WKD_MESSAGE (JNY_ID) async";
+        
+        try {
+            statement = connection.createStatement();
+            connection.setAutoCommit(true);
+            int result = statement.executeUpdate(sqlCreateIndex);
+            
+            if(result > 0) {
+                System.out.println();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
     static void testInsert(Connection connection) {
         Statement statement = null;
         int result = 0;
@@ -67,16 +84,22 @@ public class Phoenix {
 
     static void testSelect(Connection connection) {
         try {
-            PreparedStatement statement = connection.prepareStatement("explain SELECT * FROM DATA_CENTER.WAKANDA_GPS AS wg WHERE JNY_ID = '12019101100000001'");
+            String singleTableSelect = "SELECT * FROM DATA_CENTER.WAKANDA_GPS AS wg WHERE JNY_ID = '12019101100000001'";
+            String tableJoinSelect = " select wg.speed as speed ,wj.JNY_ID as jnyId " + 
+                    " from DATA_CENTER.WAKANDA_GPS AS  wg " + 
+                    " INNER JOIN DATA_CENTER.WKD_JOURNEY wj " + 
+                    " on wg.JNY_ID = wj.JNY_ID " + 
+                    " WHERE wg.JNY_ID = '12019101100000001'";
+            PreparedStatement statement = connection.prepareStatement(tableJoinSelect);
             
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                String businessNo = resultSet.getString("business_no");
-                // String deviceNo = resultSet.getString(2);
+                //String businessNo = resultSet.getString("business_no");
+                String jnyId = resultSet.getString("JNYID");
                 Float speed = resultSet.getFloat("SPEED");
 
-                System.out.println("business_no " + businessNo + "  speed " + speed);
+                System.out.println("business_no " + jnyId + "  speed " + speed);
             }
 
             resultSet.close();
@@ -100,7 +123,8 @@ public class Phoenix {
         }
 
         //testInsert(connection);
-         testSelect(connection);
+         //testSelect(connection);
+        testCreateIndex(connection);
 
         try {
             connection.close();

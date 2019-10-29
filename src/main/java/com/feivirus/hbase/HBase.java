@@ -18,11 +18,14 @@ import org.apache.hadoop.hbase.util.Bytes;
 import org.springframework.context.annotation.Bean;
 
 public class HBase {    
+    /**0 qa
+     * 1 myhost
+     */
     private int environment;
     
     public static void main(String[] args) {
         HBase hBase = new HBase();       
-        hBase.setEnvironment(1);
+        hBase.setEnvironment(0);
         Table table = null;
         
         if (hBase.getEnvironment() == 0) {
@@ -51,6 +54,10 @@ public class HBase {
             scan.addColumn(Bytes.toBytes("personal data"), Bytes.toBytes("name"));
             scan.addColumn(Bytes.toBytes("personal data"), Bytes.toBytes("city"));
         }
+        
+        scan.withStartRow(Bytes.toBytes("2234567890150000000015706976010002620601"));
+        scan.withStopRow(Bytes.toBytes("2234567890150000000015707037770002626901"));
+        
 
         
         try {
@@ -147,6 +154,10 @@ public class HBase {
         configuration.set("hbase.zookeeper.property.dataDir", " /media/hbase/data");
         configuration.set("base.unsafe.stream.capability.enforce", "false");
         configuration.set("hbase.defaults.for.version.skip", "true");
+        configuration.set("hbase.rpc.timeout", "1800000");
+        configuration.set("hbase.client.operation.timeout", "1800000");
+        configuration.set("hbase.client.scanner.caching", "1000");
+        configuration.set("hbase.client.scanner.timeout.period", "1800000");
         
         configuration.set("fs.hdfs.impl", "org.apache.hadoop.hdfs.DistributedFileSystem");
         configuration.set("fs.defaultFS", "hdfs://192.168.1.189:9000");
@@ -154,7 +165,7 @@ public class HBase {
     }
     
     public Table initHBaseTable(String tableName) {        
-        Configuration configuration = getHBaseConfiguration(1);
+        Configuration configuration = getHBaseConfiguration(environment);
         Connection connection = getConnection(configuration);
         
         try {
