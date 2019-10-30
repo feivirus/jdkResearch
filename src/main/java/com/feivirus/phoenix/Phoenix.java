@@ -90,7 +90,8 @@ public class Phoenix {
                     " INNER JOIN DATA_CENTER.WKD_JOURNEY wj " + 
                     " on wg.JNY_ID = wj.JNY_ID " + 
                     " WHERE wg.JNY_ID = '12019101100000001'";
-            PreparedStatement statement = connection.prepareStatement(tableJoinSelect);
+            String singleTableSelectWithoutIndex = "SELECT * FROM DATA_CENTER.WAKANDA_GPS";
+            PreparedStatement statement = connection.prepareStatement(singleTableSelectWithoutIndex);
             
             ResultSet resultSet = statement.executeQuery();
 
@@ -123,8 +124,8 @@ public class Phoenix {
         }
 
         //testInsert(connection);
-         //testSelect(connection);
-        testCreateIndex(connection);
+        testSelect(connection);
+        //testCreateIndex(connection);
 
         try {
             connection.close();
