@@ -37,6 +37,7 @@ public class Phoenix {
         String sqlGood = "UPSERT INTO FEIVIRUS_TEST.DC_GOODS(id,GOODS_NAME, GOODS_CATEGORY, GOODS_PRICE)VALUES(";
         int currentRow = 5003;
         StringBuffer buffer = new StringBuffer();
+        String sqlTest = "upsert into DATA_CENTER.DEV_GPS_TEST(BUSINESS_NO, dev)values('";
 
         try {
             statement = connection.createStatement();
@@ -48,16 +49,16 @@ public class Phoenix {
                 //buffer.append(sqlUserA);
                 
                 //order
-                buffer.append(sqlOrder);
+                buffer.append(sqlTest);
                 //id
                 buffer.append(currentRow);
-                buffer.append(",");
+                buffer.append("','");
                 //dc_user_id
-                buffer.append(currentRow);
-                buffer.append(",1,");
+//                buffer.append(currentRow);
+//                buffer.append(",1,");
                 //dc_goods_id
                 buffer.append(currentRow);
-                buffer.append(")");
+                buffer.append("')");
                 //buffer.append(sqlUserB);
                 
                 //goods
@@ -113,18 +114,25 @@ public class Phoenix {
         Connection connection = null;
 
         try {
-            Class.forName("org.apache.phoenix.jdbc.PhoenixDriver");
+            //Class.forName("org.apache.phoenix.jdbc.PhoenixDriver");
+            Class.forName("org.apache.phoenix.queryserver.client.Driver");
             Properties properties = new Properties();
             properties.setProperty("phoenix.schema.isNamespaceMappingEnabled", "true");
-            properties.setProperty("phoenix.schema.mapSystemTablesToNamespace", "true"); 
+            properties.setProperty("phoenix.schema.mapSystemTablesToNamespace", "true");
+            properties.setProperty("testWhileIdle", "false");
             
-            connection = DriverManager.getConnection("jdbc:phoenix:192.168.1.192:2181", properties);    
+            //connection = DriverManager.getConnection("jdbc:phoenix:192.168.1.192:2181", properties);
+            connection = DriverManager.getConnection("jdbc:phoenix:192.168.1.189:2182", properties);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        //testInsert(connection);
-        testSelect(connection);
+        if(connection == null) {
+            return;
+        }
+
+        testInsert(connection);
+        //testSelect(connection);
         //testCreateIndex(connection);
 
         try {
