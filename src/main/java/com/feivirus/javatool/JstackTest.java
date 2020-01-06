@@ -2,6 +2,8 @@ package com.feivirus.javatool;
 
 /**
  * jstack -l 1908
+ * ps -mp 12449 -o THREAD,tid,time
+ *  jstack -F 1908 >> 1.txt
  */
 public class JstackTest {
     private Double count = 1000d;

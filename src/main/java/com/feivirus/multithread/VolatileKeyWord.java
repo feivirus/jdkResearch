@@ -1,8 +1,11 @@
-package com.feivirus.commonclass;
+package com.feivirus.multithread;
 
 /**
  * 
  * @author feivirus
+ * 写volatile变量,线程本地变量会刷新到主内存
+ * 读volatile的变量,线程本地变量会置无效,从主内存读取值
+ * @see http://novoland.github.io/%E5%B9%B6%E5%8F%91/2014/07/26/Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.html
  *
  */
 public class VolatileKeyWord {

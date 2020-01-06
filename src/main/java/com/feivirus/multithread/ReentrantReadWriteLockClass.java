@@ -1,4 +1,4 @@
-package com.feivirus.commonclass;
+package com.feivirus.multithread;
 
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
