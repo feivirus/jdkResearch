@@ -12,6 +12,7 @@ import org.nlpcn.commons.lang.util.CollectionUtil;
 
 /**
  * @author feivirus
+ * bin/flink run -c com.feivirus.flink.demo.SocketWindowWordCount examples/feivirus/jdk-research-0.0.1-SNAPSHOT.jar --port 9000
  */
 public class SocketWindowWordCount {
     public static void main(String[] args) throws  Exception{
@@ -27,6 +28,7 @@ public class SocketWindowWordCount {
 
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         DataStream<String> text = env.socketTextStream("localhost", port, "\n");
+        System.out.println("---feivirus---任务开始");
 
         DataStream<WordWithCount> windowCount = text
                 .flatMap(new FlatMapFunction<String, WordWithCount>() {
@@ -34,6 +36,7 @@ public class SocketWindowWordCount {
                     public void flatMap(String s, Collector<WordWithCount> collector) throws Exception {
                         for(String word : s.split("\\s")) {
                             collector.collect(new WordWithCount(word, 1L));
+                            System.out.println("---feivirus---flatmap--任务: " + word);
                         }
                     }
                  })
@@ -42,6 +45,8 @@ public class SocketWindowWordCount {
                 .reduce(new ReduceFunction<WordWithCount>() {
                     @Override
                     public WordWithCount reduce(WordWithCount wordWithCount, WordWithCount t1) throws Exception {
+                        System.out.println("---feivirus---reduce--任务" + wordWithCount.word +
+                                "---" + t1.word);
                         return new WordWithCount(wordWithCount.word, wordWithCount.count + t1.count);
                     }
                 });

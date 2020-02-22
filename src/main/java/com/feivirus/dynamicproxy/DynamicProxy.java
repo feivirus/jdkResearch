@@ -11,7 +11,8 @@ public class DynamicProxy implements InvocationHandler {
 	public DynamicProxy(Object subject) {
 		this.subject = subject;
 	}	
-	
+
+	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 		System.out.println("do something before real call");
 		System.out.println("Method: " + method);
@@ -19,6 +20,9 @@ public class DynamicProxy implements InvocationHandler {
 		method.invoke(subject, args);
 		
 		System.out.println("after real call");
+		/**
+		 * 因为return null, 所以调用Proxy.newProxyInstance返回的对象debug时，显示null
+		 */
 		return null;
 	}
 	
