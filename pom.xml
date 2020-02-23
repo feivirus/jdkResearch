@@ -256,5 +256,37 @@
 				</executions>
 			</plugin>
 		</plugins>
+		<resources>
+			<!-- 复制类似于mybatis的xml 如果存在其他则加入 -->
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+			<!-- 复制common -->
+			<resource>
+				<directory>src/main/resources/common</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+					<include>**/*.yaml</include>
+				</includes>
+			</resource>
+			<!-- 复制固定环境 -->
+			<resource>
+				<directory>src/main/resources/${package.environment}</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+			<!-- 复制mapper文件 -->
+			<resource>
+				<directory>src/main/resources/META-INF</directory>
+				<targetPath>META-INF/</targetPath>
+			</resource>
+		</resources>
 	</build>
 </project>
