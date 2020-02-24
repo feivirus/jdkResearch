@@ -1,4 +1,4 @@
-package com.feivirus.commonclass;
+package com.feivirus.importantclass;
 
 import java.util.ArrayList;
 import java.util.List;

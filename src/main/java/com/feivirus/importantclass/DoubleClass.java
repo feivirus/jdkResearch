@@ -1,4 +1,4 @@
-package com.feivirus.commonclass;
+package com.feivirus.importantclass;
 
 public class DoubleClass {
     public static void main(String[] args) {

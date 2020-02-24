@@ -1,4 +1,4 @@
-package com.feivirus.commonclass;
+package com.feivirus.importantclass;
 
 import java.util.HashMap;
 import java.util.Map;

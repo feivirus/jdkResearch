@@ -1,4 +1,4 @@
-package com.feivirus.commonclass;
+package com.feivirus.importantclass;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;

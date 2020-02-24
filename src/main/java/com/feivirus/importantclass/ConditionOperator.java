@@ -1,6 +1,4 @@
-package com.feivirus.commonclass;
-
-import lombok.Data;
+package com.feivirus.importantclass;
 
 public class ConditionOperator {
 	public static void main(String []args) {

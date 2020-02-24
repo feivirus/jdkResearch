@@ -3,11 +3,11 @@ package com.feivirus.spi;
 import java.util.ServiceLoader;
 
 public class SpiTest {
-    public ServiceLoader<Animal> serviceLoader = ServiceLoader.load(Animal.class);
-    
     public void testGetAnimal() {      
         System.out.println("testGetAnimal");
-        
+
+        ServiceLoader<Animal> serviceLoader = ServiceLoader.load(Animal.class);
+
         if (serviceLoader == null) {
             System.out.println("spi 发现 0 个实现");
             return;

@@ -268,7 +268,7 @@
         </net.java.amateras.uml.properties.BooleanPropertyDescriptor>
       </propertyDescriptors>
       <stereoType></stereoType>
-      <name>com.feivirus.thread.ThreadPool</name>
+      <name>com.feivirus.multithread.ThreadPool</name>
       <isAbstract>false</isAbstract>
     </net.java.amateras.uml.classdiagram.model.ClassModel>
     <net.java.amateras.uml.classdiagram.model.ClassModel>
@@ -416,7 +416,7 @@
         </net.java.amateras.uml.properties.BooleanPropertyDescriptor>
       </propertyDescriptors>
       <stereoType></stereoType>
-      <name>com.feivirus.thread.ThreadPool.TaskProducer</name>
+      <name>com.feivirus.multithread.ThreadPool.TaskProducer</name>
       <isAbstract>false</isAbstract>
     </net.java.amateras.uml.classdiagram.model.ClassModel>
     <net.java.amateras.uml.classdiagram.model.ClassModel>
@@ -524,7 +524,7 @@
         </net.java.amateras.uml.properties.BooleanPropertyDescriptor>
       </propertyDescriptors>
       <stereoType></stereoType>
-      <name>com.feivirus.thread.ThreadPool.RPCTracker</name>
+      <name>com.feivirus.multithread.ThreadPool.RPCTracker</name>
       <isAbstract>false</isAbstract>
     </net.java.amateras.uml.classdiagram.model.ClassModel>
   </children>

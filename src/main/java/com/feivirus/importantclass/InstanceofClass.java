@@ -1,4 +1,4 @@
-package com.feivirus.commonclass;
+package com.feivirus.importantclass;
 
 public class InstanceofClass {
     public static void main(String[] args) {
