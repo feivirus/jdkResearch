@@ -29,7 +29,7 @@ class SimpleRunnable implements Runnable {
         lock.lock();
         try {
             System.out.println(Thread.currentThread().getName() + " start run");
-            Thread.sleep(1000 * 60 * 60);
+            Thread.sleep(1000 * 30);
             System.out.println(Thread.currentThread().getName() + " finish run");
         } catch (InterruptedException e) {
             e.printStackTrace();
