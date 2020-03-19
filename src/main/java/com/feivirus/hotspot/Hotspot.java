@@ -56,4 +56,14 @@ public class Hotspot {
  * 四.langtools
  * javac,javap等程序源码
  */
+/**
+ * 主要模块
+ * 1.虚拟机启动
+ * 2.gc 参考 com.feivirus.gc 包
+ * 3.重要jdk类  参考 com.feivirus.importantclass
+ * 4.多线程 参考 com.feivirus.multithread
+ * 5.aio/io/nio 参考 com.feivirus.javaIO com.feivirus.javaNIO
+ * 6.对象结构,字节码与模板解释器 参考 com.feivirus.hotspot
+ * 7.监控工具 参考 com.feivirus.javatool
+ */
 }

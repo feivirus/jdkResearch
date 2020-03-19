@@ -2,6 +2,10 @@ package com.feivirus.importantclass;
 
 public class DoubleClass {
     public static void main(String[] args) {
+        Double speed = 500d;
+        Integer maxSpeed = 100;
+        System.out.println("compare " + (speed >= maxSpeed));
+
         Double doubleValue = 100.0 / 10.0d;
         Double double1 = 10d;
         Integer intValue = 10;

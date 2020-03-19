@@ -1,4 +1,4 @@
-package com.feivirus.hsdb;
+package com.feivirus.javatool.hsdb;
 
 public class Test {
     public static void main(String[] args) {

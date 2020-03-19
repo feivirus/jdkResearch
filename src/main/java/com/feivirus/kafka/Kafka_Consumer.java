@@ -7,6 +7,7 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 
+/*最好设置消费的group*/
 public class Kafka_Consumer {
     public static void main(String[] args) {
         String topicName = "test";
