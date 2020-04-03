@@ -20,7 +20,7 @@ public class BigIntAdder {
      * @param secondNumber
      * @return
      */
-    private String add(String firstNumber, String secondNumber) {
+    public String add(String firstNumber, String secondNumber) {
         if (StringUtils.isEmpty(firstNumber) ||
                 firstNumber.equals("0")) {
             return secondNumber;
@@ -34,13 +34,13 @@ public class BigIntAdder {
         StringBuffer result = new StringBuffer("");
         boolean carry = false;
         int oneBitResult = 0;
-        boolean isFirstMax = firstNumber.length() > secondNumber.length();
+        boolean isFirstLonger = firstNumber.length() > secondNumber.length();
 
         for(int i = minLength - 1; i >= 0; i--) {
             char firstChar = '0';
             char secondChar = '0';
 
-            if (isFirstMax) {
+            if (isFirstLonger) {
                 firstChar = firstNumber.charAt(firstNumber.length() - secondNumber.length() + i);
                 secondChar = secondNumber.charAt(i);
             } else {
@@ -72,7 +72,7 @@ public class BigIntAdder {
         boolean isSecondMax = firstNumber.length() < secondNumber.length();
         boolean firstCarry = true;
 
-        if (isFirstMax) {
+        if (isFirstLonger) {
             for(int i = firstNumber.length() - minLength - 1; i >= 0; i--) {
                 char firstChar = firstNumber.charAt(i);
 
