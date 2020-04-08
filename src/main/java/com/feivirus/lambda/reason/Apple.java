@@ -92,6 +92,7 @@ public class Apple {
 	
 	/**
 	 * 测试用例
+	 * AppleTest在test目录里
 	 * {@link com.feivirus.lambda.reason.AppleTest.testFilterApplesWithStrategy()}
 	 * @param inventory
 	 * @param applePredicate
@@ -144,6 +145,7 @@ public class Apple {
 	
 	/**
 	 * 测试用例
+	 * AppleTest在test目录里
 	 * {@link com.feivirus.lambda.reason.AppleTest.testFilterApples()}
 	 * 
 	 * @param inventory
@@ -166,7 +168,8 @@ public class Apple {
 	 * 方法实现时通过 策略模式+泛型
 	 * 方法调用时实参 传入方法
 	 * 因为有泛型,不只适用于Apple类
-	 * 
+	 *
+	 * AppleTest在test目录里
 	 * 测试用例 {@link com.feivirus.lambda.reason.AppleTest.testFilter()}
 	 * @param <T>
 	 */

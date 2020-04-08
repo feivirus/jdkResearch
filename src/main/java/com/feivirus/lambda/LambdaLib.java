@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class LambdaLib {
 	/**
 	 * 1.predicate filter
-	 * 布尔表达式
+	 * 一个参数，返回布尔值
 	 */
 	public void testPredicate() {
 		Predicate<String> p = (String s) -> !s.isEmpty();
@@ -45,7 +45,7 @@ public class LambdaLib {
 	
 	/**
 	 * 2.consumer accept
-	 *  消费一个对象
+	 *  一个参数，无返回值
 	 */
 	public void testConsumer() {
 		List<Integer> intList = Arrays.asList(1, 2, 3);
@@ -56,6 +56,8 @@ public class LambdaLib {
 	/**
 	 * 3.function apply
 	 * 从一个对象中选择/提取
+	 *
+	 * 一个参数，一个返回值
 	 */
 	public void testFunction() {
 		List<String> strList = Arrays.asList("lambda", "in", "action");
@@ -67,6 +69,7 @@ public class LambdaLib {
 	/**
 	 * 4.supplier get
 	 * 创建对象
+	 * 无参数，一个返回值.不能抛异常.Callable可以抛异常.
 	 */
 	public void testSupplier() {
 		
@@ -75,6 +78,7 @@ public class LambdaLib {
 	/**
 	 * 5.unaryOperator identity
 	 * 合并两个值
+	 * 继承自Function,一个参数，一个返回值，参数和返回值的类型相同.
 	 */
 	public void testUnaryOperator() {
 		
@@ -82,6 +86,7 @@ public class LambdaLib {
 	
 	/**
 	 * 6.callable call
+	 * 无参，一个返回值,可以抛出一个异常.Supplier不能抛异常
 	 */
 	public void testCallable() {
 		
@@ -90,6 +95,7 @@ public class LambdaLib {
 	/**
 	 * 7. Comparator 
 	 * 比较两个对象
+	 * 一个参数，返回bool值
 	 */
 	public void testComparator() {
 		

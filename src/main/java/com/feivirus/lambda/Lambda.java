@@ -18,6 +18,7 @@ import com.feivirus.lambda.reason.Apple.ApplePredicate;
  * 
  * 1.lambda的产生原因见 {@link com.feivirus.lambda.reason.Apple} 类
  * 2.lambda的匿名方法->匿名类->自动产生策略模式的接口实现类
+ *  AppleTest在test目录里
  *  {@link com.feivirus.lambda.reason.AppleTest.testFilterApples()}
  * 3.函数式接口:只定义一个抽象方法的接口,即便有很多默认方法.这个抽象方法的签名称为函数描述符.
  * 4.常用lambda的函数式接口库参考{@link com.feivirus.lambda.LambdaLib}
@@ -70,6 +71,7 @@ public class Lambda {
 	
 	/**
 	 * 测试用例
+	 * LambdaTest类在test目录里
 	 * {@link com.feivirus.lambda.LambdaTest.testConstructAppleWithIntegerList()}
 	 * @param valueList
 	 * @param funcApple
@@ -132,7 +134,7 @@ public class Lambda {
 		Function<String, Integer> intParseFunc = Integer::parseInt; 
 		
 		//通过lambda 调用构造函数
-		//!!!这地方居然编译过了，而且运行正常, Supplier的接口应该是参数为空，返回对象的
+		//return 如果只有一行代码，return关键字可以省略
 		Supplier<Apple> supplierApple = () -> new Apple("red", 100);
 		Apple a1 = supplierApple.get();
 		System.out.println(a1.getColor());
