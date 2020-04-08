@@ -24,6 +24,7 @@ import com.feivirus.lambda.reason.Apple.ApplePredicate;
  * 4.常用lambda的函数式接口库参考{@link com.feivirus.lambda.LambdaLib}
  * 5.lambda其实类似c++的函数指针
  * 6.具体使用步骤参考Lambda.lambdaSteps()方法
+ * 7.lambda只关心方法的参数格式，参数类型，返回值，不关系方法名，方法名可以任意.
  */
 public class Lambda {
 	
