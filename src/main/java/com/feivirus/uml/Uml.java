@@ -23,6 +23,7 @@ package com.feivirus.uml;
  * 2.用例图
  * 3.类图:名称，属性，方法.实体类，控制类，边界类.
  * 4.交互图-顺序图(对象生命线，消息)、协作图
+ *
  * 5.活动图
  *  活动，活动流,分劈，汇合
  * 6.状态图
@@ -32,4 +33,19 @@ package com.feivirus.uml;
  * 六.GRASP与设计模式
  */
 public class Uml {
+    public static void main(String[] args) {
+        /***
+         * 练习顺序
+         * 图在processon上画，保存到网盘上.
+         *
+         * 1.SpaceShip
+         * 2.PlayDice
+         * 3.UserLogin
+         * 4.UserAdd
+         * 5.WebMessageManager
+         * 6.OrderState
+         * 7.OrderGoods
+         * 8.FactoryMethod
+         */
+    }
 }

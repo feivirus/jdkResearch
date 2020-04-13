@@ -6,6 +6,7 @@ package com.feivirus.uml.spaceship;
  * 轨道舱是工作和休息的场所。紧急情况下，可以用救生塔逃生。飞船两侧有多个
  * 太阳能电池翼，提供电能
  * 画出类图
+ * 12-14
  */
 public class SpaceShip {
 }

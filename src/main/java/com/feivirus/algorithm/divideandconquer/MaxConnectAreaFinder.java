@@ -1,4 +1,4 @@
-package com.feivirus.algorithm.array;
+package com.feivirus.algorithm.divideandconquer;
 
 /**
  * @author feivirus
