@@ -9,6 +9,10 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 
 /**
+ *
+ * Proxy动态代理源码分析
+ * https://blog.csdn.net/feivirus/article/details/104231404
+ *
  * 也可以使用hsdb创建代理生成对象的class文件
  */
 public class DynamicProxyClient {

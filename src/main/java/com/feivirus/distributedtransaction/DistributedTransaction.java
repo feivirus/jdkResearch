@@ -2,6 +2,8 @@ package com.feivirus.distributedtransaction;
 
 /**
  * @author feivirus
+ *
+ * 我的github的minitransaction工程
  * 参考:
  *https://kefeng.wang/2018/03/01/distributed-transaction/
  *http://www.importnew.com/26212.html
