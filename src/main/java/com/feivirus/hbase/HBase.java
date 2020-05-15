@@ -23,6 +23,10 @@ import org.apache.hadoop.hbase.util.Bytes;
 import com.google.protobuf.RpcCallback;
 import org.springframework.context.annotation.Bean;
 
+/**
+ * hbase源码分析v0.01
+ * https://blog.csdn.net/feivirus/article/details/102684464
+ */
 public class HBase {
     /**
      * 0 qa

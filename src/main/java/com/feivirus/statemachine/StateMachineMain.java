@@ -9,6 +9,8 @@ import com.feivirus.statemachine.impl.StateMachineBuilderImpl;
  * 自动机
  * @author feivirus
  * 应用:比如订单状态切换,订单状态/合同规则状态切换,词法分析，审批工作流
+ * https://github.com/feivirus/ministatemachine.git
+ *
  * 参考
  * https://www.jianshu.com/p/209f1fb6a827 java词法分析器小demo
  * https://www.jianshu.com/p/f3ad78613072 androie自动机

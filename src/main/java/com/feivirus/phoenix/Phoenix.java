@@ -8,6 +8,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
+/**
+ * phoenix 源码分析v0.01
+ * https://blog.csdn.net/feivirus/article/details/102685049
+ */
 public class Phoenix {
     static void testCreateIndex(Connection connection) {
         Statement statement = null;

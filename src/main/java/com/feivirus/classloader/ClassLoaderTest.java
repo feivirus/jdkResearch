@@ -4,6 +4,9 @@ package com.feivirus.classloader;
  * @author feivirus
  * 类加载机制
  * tomcat 不同网站的类加载
+ *
+ * ClassLoader 源码分析
+ * https://blog.csdn.net/feivirus/article/details/104231382
  */
 public class ClassLoaderTest {
     public static void main(String[] args) {

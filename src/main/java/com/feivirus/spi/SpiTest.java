@@ -2,6 +2,10 @@ package com.feivirus.spi;
 
 import java.util.ServiceLoader;
 
+/***
+ * JAVA SPI ServiceLoader源码分析
+ * https://blog.csdn.net/feivirus/article/details/104231395
+ */
 public class SpiTest {
     public void testGetAnimal() {      
         System.out.println("testGetAnimal");
