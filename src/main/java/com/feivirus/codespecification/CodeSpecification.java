@@ -60,6 +60,9 @@ public class CodeSpecification {
 	 * 	  名词 + 名词形式,待定
 	 * 27.只要是Manager,条件反射定义成接口，虚拟类实现ManagerBase,实际业务类xxxManager,继承自Manager,
 	 * 默认通过StandardManager实现.
+	 * 28.autowired的全是接口，不注入具体实现类.
+	 * 29.每个接口只有一个功能，实现模块隔离，功能复用
+	 * 20.参数，xxxDto,xxxParam,xxxInfo都是build出来的，业务和技术方法分离。争取方法最小，可复用.
 	 */
  
 }

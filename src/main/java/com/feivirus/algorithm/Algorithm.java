@@ -1,5 +1,7 @@
 package com.feivirus.algorithm;
 
+import org.apache.commons.collections.CollectionUtils;
+
 /**
  * @author feivirus
  * 动态规划,分治法,递归,贪心
@@ -18,4 +20,5 @@ package com.feivirus.algorithm;
  * 13.sort
  */
 public class Algorithm {
+
 }
